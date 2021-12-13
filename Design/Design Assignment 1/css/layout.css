@@ -1,0 +1,26 @@
+.main-warpper {
+  min-width: 1002px;
+}
+
+header {
+  width: 100%;
+}
+
+.container {
+  width: 938px;
+  min-width: 938px;
+  margin: auto;
+  border: 2px solid red;
+}
+
+.navbar {
+  width: 100%;
+}
+
+.float-l {
+  float: left;
+}
+
+.float-r {
+  float: right;
+}
