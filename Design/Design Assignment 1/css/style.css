@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap");
+
+body {
+  font-family: "Mulish", sans-serif;
+  background-color: #ffffff;
+}
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Colors */
+.header-bg {
+  background-color: #7dd9e8;
+}
+
+.nav-bg {
+  background-color: #f5f5f5;
+}
+
+.sidebar-bg {
+  background-color: #f5f5f5;
+}
+
+.sidebar-heading-bg {
+  background-color: #2fc1da;
+}
+
+.user-info {
+  margin-top: 27px;
+  text-align: right;
+}
+
+.font-large {
+  font-size: 18px;
+}
+
+.user-info-items {
+  display: inline;
+  font-size: 12px;
+}
+
+.user-info-items:before {
+  content: "|";
+  padding: 5px;
+}
+
+.user-info-items:first-child:before {
+  content: "";
+}
+
+/* Navigation Bar */
+.nav-left-items {
+  font-size: 14px;
+  display: inline-block;
+  margin: 15px 22px 15px 8px;
+}
+
+.nav-right-items {
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 16px;
+  margin-bottom: 13px;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.invites-icon {
+  background: url(../images/topic-box-icon.png) no-repeat;
+  width: 10px;
+  height: 15px;
+}
+
+.friend-requests-icon {
+  background: url(../images/friend-requests-icon.png) no-repeat;
+  width: 16px;
+  height: 17px;
+}
+
+/* Right Sidebar */
+.sidebar {
+  width: 176px;
+  height: 605px;
+}
