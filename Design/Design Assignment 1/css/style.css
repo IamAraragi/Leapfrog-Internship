@@ -29,24 +29,24 @@ body {
 
 .details-primary-cl {
   color: #2fc1da;
+  font-weight: 700;
 }
 
 .details-secondary-cl {
   color: #6f971d;
+  font-weight: 700;
 }
 
 .details-tertiary-cl {
-  color: #d43f1e;
+  color: #d33f1b;
+  font-weight: 700;
 }
 
 .footer-bg {
   background-color: #727272;
 }
 
-.user-info {
-  margin-top: 27px;
-  text-align: right;
-}
+/* Fonts Used */
 
 .font-large {
   font-size: 18px;
@@ -70,6 +70,13 @@ body {
 
 .font-x-small {
   font-size: 10px;
+}
+
+/* Header */
+
+.user-info {
+  margin-top: 27px;
+  text-align: right;
 }
 
 .user-info-items {
@@ -163,7 +170,7 @@ input {
   color: #ababab;
 }
 
-/* Right Sidebar */
+/* Sidebar */
 
 .sidebar-heading {
   color: #ffffff;
@@ -229,6 +236,10 @@ input {
   height: 11px;
   width: 114px;
   background: url(../images/blue-border.png);
+}
+
+.nav-box-left a {
+  color: #ffffff;
 }
 
 .nav-box-right {
