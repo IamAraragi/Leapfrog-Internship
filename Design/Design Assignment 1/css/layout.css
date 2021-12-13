@@ -52,3 +52,7 @@ header {
 .main-content {
   width: 518px;
 }
+
+footer {
+  margin-top: 32px;
+}
