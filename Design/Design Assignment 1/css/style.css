@@ -27,6 +27,22 @@ body {
   background-color: #2fc1da;
 }
 
+.details-primary-cl {
+  color: #2fc1da;
+}
+
+.details-secondary-cl {
+  color: #6f971d;
+}
+
+.details-tertiary-cl {
+  color: #d43f1e;
+}
+
+.footer-bg {
+  background-color: #727272;
+}
+
 .user-info {
   margin-top: 27px;
   text-align: right;
@@ -34,6 +50,26 @@ body {
 
 .font-large {
   font-size: 18px;
+}
+
+.font-heading {
+  font-size: 24px;
+}
+
+.font-body {
+  font-size: 16px;
+}
+
+.font-medium {
+  font-size: 14px;
+}
+
+.font-small {
+  font-size: 12px;
+}
+
+.font-x-small {
+  font-size: 10px;
 }
 
 .user-info-items {
@@ -50,39 +86,220 @@ body {
   content: "";
 }
 
+.user-info a:hover {
+  text-decoration: underline;
+}
+
+.search-bar {
+  margin-top: 35px;
+  margin-left: 29px;
+}
+
+.search-border {
+  margin-top: 2px;
+}
+
+input {
+  width: 237px;
+  height: 20px;
+  background-color: #caeff7;
+  border: none;
+}
+
+.cross-button {
+  width: 12px;
+  height: 20px;
+  background: url(../images/cross.png) no-repeat;
+  margin-top: 2px;
+  border: none;
+}
+.search-icon {
+  width: 32px;
+  height: 20px;
+  background: url(../images/search-button.png) no-repeat;
+  margin-top: 2px;
+  border: none;
+}
+
+.search-button {
+  background: url(../images/search-box.png) no-repeat;
+  width: 53px;
+  height: 20px;
+  border: none;
+  color: #ffffff;
+}
+
 /* Navigation Bar */
+.nav-left ul {
+  margin-left: 8px;
+  padding: 5px 0px 12px 0px;
+}
+
 .nav-left-items {
   font-size: 14px;
-  display: inline-block;
-  margin: 15px 22px 15px 8px;
+  display: inline;
+  margin-right: 22px;
+  margin-left: 8px;
+  font-weight: 600;
 }
 
 .nav-right-items {
   display: inline-block;
   font-size: 12px;
-  margin-top: 16px;
-  margin-bottom: 13px;
+  padding-top: 8px;
+  padding-bottom: 13px;
+  padding-left: 31px;
 }
 
-.icon {
-  display: inline-block;
-  vertical-align: middle;
+.nav-icons {
+  margin-right: 8px;
 }
 
-.invites-icon {
-  background: url(../images/topic-box-icon.png) no-repeat;
-  width: 10px;
-  height: 15px;
+.navbar a:hover {
+  text-decoration: underline;
 }
 
-.friend-requests-icon {
-  background: url(../images/friend-requests-icon.png) no-repeat;
-  width: 16px;
-  height: 17px;
+.nav-right-items a:hover {
+  color: #ababab;
 }
 
 /* Right Sidebar */
-.sidebar {
-  width: 176px;
-  height: 605px;
+
+.sidebar-heading {
+  color: #ffffff;
+  padding: 15px 12px 14px 12px;
+  font-size: 14px;
+}
+
+.sidebar-list {
+  font-size: 12px;
+  list-style-type: none;
+}
+
+.sidebar-list a {
+  display: block;
+  padding: 12px 12px 10px 12px;
+  font-weight: 600;
+}
+
+.sidebar-list li:hover {
+  background-color: #ffffff;
+}
+
+/* Main Content */
+.main-content {
+  margin: 30px 24px 0 26px;
+}
+
+.entries-nav {
+  width: 518px;
+  height: 67px;
+  border-bottom: 2px solid #2fc1da;
+}
+
+.entries-nav-header {
+  height: 28px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.entries-nav-header:before {
+  content: "";
+  display: block;
+  height: 10px;
+  width: 255px;
+  background: url(../images/top-border.png);
+}
+
+.all-entries {
+  width: 255px;
+  height: 67px;
+}
+
+.nav-box-left {
+  height: 29px;
+  margin-left: 10px;
+  text-align: center;
+  background: #2fc1da;
+}
+
+.nav-box-left:before {
+  content: "";
+  display: block;
+  height: 11px;
+  width: 114px;
+  background: url(../images/blue-border.png);
+}
+
+.nav-box-right {
+  height: 29px;
+  margin-right: 10px;
+  text-align: center;
+  background: #dddddd;
+}
+
+.nav-box-right:before {
+  content: "";
+  display: block;
+  height: 11px;
+  width: 112px;
+  background: url(../images/gray-border.png);
+}
+
+.extra-nav-box-left {
+  height: 29px;
+  margin-left: 10px;
+  text-align: center;
+  background: #dddddd;
+}
+
+.extra-nav-box-left:before {
+  content: "";
+  display: block;
+  height: 11px;
+  width: 112px;
+  background: url(../images/gray-border.png);
+}
+
+.entries-content {
+  padding: 15px 0 15px 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.profile {
+  margin-right: 9px;
+}
+
+.main-content a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.footer-nav {
+  padding: 18px 0;
+}
+.footer-nav li {
+  display: inline;
+}
+.footer-nav a {
+  color: #d5d5d5;
+}
+.footer-nav li:before {
+  content: "•";
+  padding: 7px;
+  color: #d5d5d5;
+}
+
+.footer-nav li:first-child:before {
+  content: "";
+  padding: 0;
+}
+
+.copyright {
+  color: #d5d5d5;
+  padding: 18px 0;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
 }
