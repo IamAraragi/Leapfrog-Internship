@@ -93,7 +93,7 @@ body {
 .user-info-items {
   display: inline;
   font-size: 18px;
-  margin: 0 30px;
+  margin: 0 20px;
 }
 
 .user-info-items:first-child:before {
@@ -224,11 +224,6 @@ input {
   margin-bottom: 10px;
 }
 
-/* .suscribed {
-  float: right;
-  width: 49%;
-} */
-
 .nav-box-left {
   height: 29px;
   width: 44%;
@@ -249,12 +244,20 @@ input {
   background: #dddddd;
 }
 
+.nav-box-right:hover {
+  background: #2fc1da;
+}
+
 .extra-nav-box-left {
   height: 29px;
   width: 44%;
   margin-left: 10px;
   text-align: center;
   background: #dddddd;
+}
+
+.extra-nav-box-left:hover {
+  background: #2fc1da;
 }
 
 .all-entries img {
