@@ -1,13 +1,23 @@
-@media screen and (min-width: 360px) {
+/* Media Queries for Screen greather than 370px */
+@media screen and (min-width: 370px) {
   .search-bar {
     display: block;
     width: 350px;
     margin: 0 auto;
     padding: 10px 0 20px 0;
   }
+
+  .topic-box {
+    display: block;
+  }
+
+  .friend-request {
+    display: block;
+  }
 }
 
-@media screen and (min-width: 390px) {
+/* Media Queries for Screen greather than 410px */
+@media screen and (min-width: 410px) {
   .footer-nav {
     float: left;
   }
@@ -17,7 +27,8 @@
   }
 }
 
-@media screen and (min-width: 525px) {
+/* Media Queries for Screen greather than 550px */
+@media screen and (min-width: 550px) {
   .all-entries {
     float: left;
     width: 49%;
@@ -66,7 +77,8 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+/* Media Queries for Screen greather than 815px */
+@media screen and (min-width: 815px) {
   .left-header {
     float: left;
   }
@@ -123,6 +135,7 @@
   }
 }
 
+/* Media Queries for Screen greather than 3970px */
 @media screen and (min-width: 970px) {
   .container {
     width: 938px;

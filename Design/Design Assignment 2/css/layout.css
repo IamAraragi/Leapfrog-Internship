@@ -7,12 +7,12 @@ header {
 }
 
 .container {
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
 }
 
 .nav-container {
-  width: 100%;
+  width: 95%;
   margin: auto;
 }
 
@@ -42,8 +42,7 @@ header {
 }
 
 .main-content {
-  width: 100%;
-  width: 95%;
+  width: 98%;
   margin: 0 auto;
 }
 
