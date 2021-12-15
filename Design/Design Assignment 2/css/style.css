@@ -163,7 +163,7 @@ input {
 
 .nav-right-items {
   font-size: 12px;
-  padding-top: 8px;
+  padding-top: 12px;
   padding-bottom: 13px;
   padding-left: 31px;
 }
@@ -180,9 +180,21 @@ input {
   color: #ababab;
 }
 
+.hamburger-menu {
+  margin-top: 4px;
+}
+
 .hamburger-menu img {
   height: 20px;
   padding: 5px 0 0 5px;
+}
+
+.topic-box {
+  display: none;
+}
+
+.friend-request {
+  display: none;
 }
 
 /* Sidebar */
