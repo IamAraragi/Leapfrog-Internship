@@ -1,0 +1,321 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap");
+
+body {
+  font-family: "Mulish", sans-serif;
+  background-color: #ffffff;
+}
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Colors */
+.header-bg {
+  background-color: #7dd9e8;
+}
+
+.nav-bg {
+  background-color: #f5f5f5;
+}
+
+.sidebar-bg {
+  background-color: #f5f5f5;
+}
+
+.sidebar-heading-bg {
+  background-color: #2fc1da;
+}
+
+.details-primary-cl {
+  color: #2fc1da;
+  font-weight: 700;
+}
+.details-secondary-cl {
+  color: #6f971d;
+  font-weight: 700;
+}
+
+.details-tertiary-cl {
+  color: #d33f1b;
+  font-weight: 700;
+}
+
+.details-tertiary-cl {
+  color: #d43f1e;
+}
+
+.footer-bg {
+  background-color: #727272;
+}
+
+/* Fonts Used */
+
+.font-large {
+  font-size: 18px;
+}
+
+.font-heading {
+  font-size: 24px;
+}
+
+.font-body {
+  font-size: 16px;
+}
+
+.font-medium {
+  font-size: 14px;
+}
+
+.font-small {
+  font-size: 12px;
+}
+
+.font-x-small {
+  font-size: 10px;
+}
+
+/* Header */
+
+.logo {
+  text-align: center;
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.username {
+  display: none;
+}
+
+.user-info-items {
+  display: inline;
+  font-size: 18px;
+  margin: 0 30px;
+}
+
+.user-info-items:first-child:before {
+  content: "";
+}
+
+.user-info a:hover {
+  text-decoration: underline;
+}
+
+.search-bar {
+  display: none;
+}
+
+.search-border {
+  margin-top: 2px;
+}
+
+input {
+  width: 237px;
+  height: 20px;
+  background-color: #caeff7;
+  border: none;
+}
+
+.cross-button {
+  width: 12px;
+  height: 20px;
+  background: url(../images/cross.png) no-repeat;
+  margin-top: 2px;
+  border: none;
+}
+.search-icon {
+  width: 32px;
+  height: 20px;
+  background: url(../images/search-button.png) no-repeat;
+  margin-top: 2px;
+  border: none;
+}
+
+.search-button {
+  background: url(../images/search-box.png) no-repeat;
+  width: 53px;
+  height: 20px;
+  border: none;
+  color: #ffffff;
+}
+
+/* Navigation Bar */
+.nav-left ul {
+  margin-left: 8px;
+  padding: 5px 0px 12px 0px;
+  display: none;
+}
+
+.nav-left:hover ul {
+  display: block;
+  list-style: none;
+}
+
+.nav-left-items {
+  font-size: 14px;
+  display: block;
+  margin: 8px 0 10px 4px;
+  font-weight: 600;
+}
+
+.nav-right-items {
+  font-size: 12px;
+  padding-top: 8px;
+  padding-bottom: 13px;
+  padding-left: 31px;
+}
+
+.nav-icons {
+  margin-right: 8px;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.nav-right-items a:hover {
+  color: #ababab;
+}
+
+.hamburger-menu img {
+  height: 20px;
+  padding: 5px 0 0 5px;
+}
+
+/* Sidebar */
+
+.sidebar-heading {
+  color: #ffffff;
+  padding: 15px 12px 14px 12px;
+  font-size: 14px;
+}
+
+.sidebar-list {
+  font-size: 12px;
+  list-style-type: none;
+}
+
+.sidebar-list a {
+  display: block;
+  padding: 12px 12px 10px 12px;
+  font-weight: 600;
+}
+
+.sidebar-list li:hover {
+  background-color: #ffffff;
+}
+
+/* Main Content */
+
+.entries-nav {
+  width: 100%;
+  border-bottom: 2px solid #2fc1da;
+}
+
+.entries-nav-header {
+  height: 28px;
+  text-align: center;
+}
+
+.all-entries {
+  margin-bottom: 10px;
+}
+
+/* .suscribed {
+  float: right;
+  width: 49%;
+} */
+
+.nav-box-left {
+  height: 29px;
+  width: 44%;
+  margin-left: 10px;
+  text-align: center;
+  background: #2fc1da;
+}
+
+.nav-box-left a {
+  color: #ffffff;
+}
+
+.nav-box-right {
+  height: 29px;
+  width: 44%;
+  margin-right: 10px;
+  text-align: center;
+  background: #dddddd;
+}
+
+.extra-nav-box-left {
+  height: 29px;
+  width: 44%;
+  margin-left: 10px;
+  text-align: center;
+  background: #dddddd;
+}
+
+.all-entries img {
+  display: block;
+  width: 100%;
+}
+
+.suscribed img {
+  display: block;
+  width: 100%;
+}
+.nav-box-left img {
+  display: none;
+}
+
+.nav-box-right img {
+  display: none;
+}
+
+.extra-nav-box-left img {
+  display: none;
+}
+
+.entries-content {
+  padding: 15px 0 15px 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.profile {
+  margin-right: 9px;
+}
+.main-content a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.footer-nav {
+  padding: 18px 0;
+}
+.footer-nav li {
+  display: inline;
+}
+.footer-nav a {
+  color: #d5d5d5;
+}
+.footer-nav li:before {
+  content: "•";
+  padding: 7px;
+  color: #d5d5d5;
+}
+
+.footer-nav li:first-child:before {
+  content: "";
+  padding: 0;
+}
+
+.copyright {
+  color: #d5d5d5;
+  padding: 18px 0;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}

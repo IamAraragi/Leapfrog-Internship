@@ -1,0 +1,154 @@
+@media only screen and (min-width: 360px) {
+  .search-bar {
+    display: block;
+    width: 350px;
+    margin: 0 auto;
+    padding: 10px 0 20px 0;
+  }
+}
+
+@media only screen and (min-width: 525px) {
+  .all-entries {
+    float: left;
+    width: 49%;
+    margin: 3px 10px 0 0;
+  }
+
+  .suscribed {
+    width: 49%;
+    float: left;
+    margin-top: 1px;
+  }
+
+  .nav-box-left img {
+    display: block;
+    width: 100%;
+  }
+
+  .nav-box-right img {
+    display: block;
+    width: 100%;
+  }
+
+  .extra-nav-box-left img {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .left-header {
+    float: left;
+  }
+
+  .logo {
+    float: left;
+  }
+  .search-bar {
+    display: block;
+    float: right;
+    margin-top: 35px;
+    margin-left: 29px;
+    padding: 0;
+  }
+  .user-info {
+    float: right;
+    margin-top: 27px;
+    text-align: right;
+  }
+  .username {
+    display: block;
+  }
+
+  .user-info-items {
+    display: inline;
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .user-info-items:before {
+    content: "|";
+    padding: 5px;
+  }
+
+  .content {
+    width: 72%;
+    float: left;
+  }
+  .main-content {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .content {
+    float: left;
+  }
+
+  .right-sidebar {
+    display: block;
+    float: right;
+    width: 23%;
+    height: 626px;
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 970px) {
+  .container {
+    width: 938px;
+    min-width: 938px;
+    margin: 0 auto;
+  }
+
+  .nav-container {
+    width: 938px;
+    min-width: 938px;
+    height: 40px;
+    margin: auto;
+  }
+
+  .content {
+    width: 80%;
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+
+  .nav-left ul {
+    display: block;
+  }
+
+  .nav-left-items {
+    font-size: 14px;
+    display: inline;
+    margin-right: 22px;
+    font-weight: 600;
+  }
+
+  .left-sidebar {
+    display: block;
+    float: left;
+    width: 25%;
+    height: 626px;
+    margin-right: 35px;
+  }
+
+  .right-sidebar {
+    width: 18%;
+    margin: 0;
+  }
+
+  .main-content {
+    float: left;
+    width: 68.5%;
+  }
+
+  .nav-box-left {
+    height: 29px;
+    width: 45%;
+    margin-left: 10px;
+    text-align: center;
+    background: #2fc1da;
+  }
+}
