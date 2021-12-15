@@ -133,9 +133,13 @@
     height: 626px;
     margin-right: 10px;
   }
+
+  .video-tutorials {
+    display: none;
+  }
 }
 
-/* Media Queries for Screen greather than 3970px */
+/* Media Queries for Screen greather than 970px */
 @media screen and (min-width: 970px) {
   .container {
     width: 938px;
@@ -193,5 +197,9 @@
     margin-left: 10px;
     text-align: center;
     background: #2fc1da;
+  }
+
+  .recent-searches {
+    display: none;
   }
 }

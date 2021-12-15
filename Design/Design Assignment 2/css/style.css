@@ -334,3 +334,40 @@ input {
 .footer-nav a:hover {
   text-decoration: underline;
 }
+
+/* Recent Searches and Video Tutorials for mobile view */
+
+.recent-searches {
+  margin-top: 5px;
+}
+
+.m-0 {
+  padding: 5px 0 0 5px;
+}
+
+.m-1 img {
+  height: 20px;
+  padding: 5px 5px 0 0;
+}
+
+.video-tutorials ul {
+  display: none;
+}
+
+.video-tutorials:hover ul {
+  display: block;
+  list-style: none;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.recent-searches ul {
+  display: none;
+}
+
+.recent-searches:hover ul {
+  display: block;
+  list-style: none;
+  padding-left: 10px;
+  font-size: 14px;
+}
