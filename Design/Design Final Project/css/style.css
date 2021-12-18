@@ -38,14 +38,17 @@ body {
   padding: 20px 0 0 0;
 }
 
+/* Logo */
 .logo {
   font-size: 24px;
   float: left;
   margin: 5px 0 0 10px;
 }
 
+/* Menu */
 .menu {
   display: none;
+  padding-left: 20px;
 }
 
 .menu-items {
@@ -58,13 +61,14 @@ body {
 }
 
 .drop-down {
-  display: inline-block;
+  display: none;
   vertical-align: bottom;
   border: 0;
   background-color: #f9f1e6;
   padding-left: 8px;
 }
 
+/* Search Bar */
 .search-bar {
   display: none;
   padding: 5px 0;
@@ -92,6 +96,7 @@ body {
   outline: none;
 }
 
+/* Header Icons */
 .header-icons {
   float: right;
   padding-right: 30px;
@@ -109,6 +114,7 @@ body {
   display: inline-block;
 }
 
+/* Hamburger Menu */
 .hamburger {
   float: right;
 }
@@ -182,6 +188,7 @@ body {
 
 /* Header Overlay */
 
+/* Header Overlay 1 */
 .header-overlay1 {
   background-color: #f8f8f8;
   text-align: center;
@@ -220,6 +227,7 @@ body {
   color: #e89f71;
 }
 
+/* Header Overlay 2 */
 .header-overlay2 {
   background: rgba(255, 255, 255, 0.72);
   display: none;
@@ -496,6 +504,7 @@ body {
   display: none;
 }
 
+/* Overlay for room section */
 .room-overlay {
   display: none;
 }
@@ -543,6 +552,10 @@ body {
 }
 
 /* Tips and Tricks Section */
+
+.tips-wrapper {
+  margin-top: 44px;
+}
 
 .second-tip {
   display: none;
@@ -697,7 +710,7 @@ body {
 
 /* Footer */
 .footer-wrapper {
-  padding: 49px 0 0 16px;
+  padding: 49px 0 49px 16px;
   border-top: 1px solid #d8d8d8;
 }
 
@@ -749,13 +762,19 @@ body {
 
 .update input {
   width: 67%;
-  padding: 12px 0;
+  padding: 12px 0 12px 12px;
   display: inline-block;
+  background-color: #f4f5f7;
+  border: 0;
+}
+
+.update input:focus {
+  outline: none;
 }
 
 .update-button {
   border: 0;
-  padding: 10px;
+  padding: 8px;
   background-color: #e89f71;
   display: inline-block;
   vertical-align: bottom;
