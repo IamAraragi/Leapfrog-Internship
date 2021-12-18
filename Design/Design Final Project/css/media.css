@@ -1,0 +1,280 @@
+@media screen and (min-width: 768px) {
+  .container {
+    width: 86%;
+    margin: 0 auto;
+  }
+
+  .footer-container {
+    width: 86%;
+    margin: 0 auto;
+  }
+
+  .search-bar {
+    display: block;
+    float: left;
+    width: 33%;
+    margin-left: 11%;
+  }
+
+  .carousel {
+    position: relative;
+  }
+
+  .header-overlay2 {
+    display: block;
+    position: absolute;
+    top: 64%;
+    left: 59%;
+  }
+
+  .carousel-image1 {
+    display: block;
+    width: 26%;
+    float: left;
+  }
+
+  .carousel-image2 {
+    width: 64.5%;
+    float: left;
+    padding-left: 17px;
+  }
+
+  .carousel-image3 {
+    display: block;
+    width: 4.67%;
+    float: right;
+    padding-left: 17px;
+  }
+
+  .feature {
+    float: left;
+    width: 50%;
+  }
+
+  .product {
+    float: left;
+    width: 47%;
+    padding-top: 0px;
+  }
+
+  .product-2,
+  .product-4,
+  .product-6,
+  .product-8 {
+    margin-left: 32px;
+  }
+
+  .second-tip {
+    display: block;
+  }
+
+  .tips-content {
+    float: left;
+    width: 48.5%;
+  }
+
+  .second-tip {
+    margin-left: 19px;
+  }
+
+  .information,
+  .footer-menu,
+  .footer-account,
+  .connect,
+  .update {
+    display: inline-block;
+    padding-right: 40px;
+    padding-bottom: 50px;
+  }
+
+  .footer-menu,
+  .footer-account,
+  .connect,
+  .update {
+    padding-top: 0;
+    vertical-align: top;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .room-description {
+    float: left;
+    padding: 223px 86px 0 100px;
+  }
+
+  .room1 {
+    float: right;
+  }
+
+  .other-rooms {
+    clear: both;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .menu {
+    display: block;
+    float: left;
+    margin: 10px 0 0 20px;
+  }
+
+  .menu-items {
+    display: inline-block;
+    padding: 0 20px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .header-icons {
+    padding: 0;
+  }
+
+  .arrow-right {
+    padding: 0;
+  }
+
+  .carousel-image2 {
+    padding-left: 32px;
+  }
+
+  .carousel-image3 {
+    padding-left: 32px;
+  }
+
+  .header-overlay1 {
+    position: absolute;
+    width: 34%;
+    top: 10%;
+    left: 10%;
+  }
+
+  .feature {
+    float: left;
+    width: 25%;
+  }
+
+  .feature-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .product {
+    float: left;
+    width: 23%;
+  }
+
+  .product-3,
+  .product-7 {
+    margin-left: 32px;
+  }
+
+  .room-images {
+    display: block;
+  }
+
+  .room-description {
+    float: left;
+    width: 26%;
+    padding: 221px 86px 0 100px;
+  }
+
+  .room1 {
+    position: relative;
+    float: left;
+    width: 27%;
+    margin-right: 26px;
+    margin-bottom: 44px;
+  }
+
+  .other-rooms {
+    clear: none;
+  }
+
+  .room-overlay {
+    display: block;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+  }
+
+  .other-rooms {
+    float: right;
+    width: 31%;
+  }
+
+  .room-indicator {
+    margin: 0;
+    padding-top: 40px;
+  }
+
+  .room-arrow-right-button {
+    right: 5%;
+  }
+
+  .tips-content {
+    float: left;
+    width: 32%;
+  }
+
+  .third-tip {
+    display: block;
+    margin-left: 25px;
+  }
+
+  .block-1 {
+    float: left;
+    width: 32%;
+  }
+
+  .block-2 {
+    float: left;
+    width: 32%;
+  }
+
+  .block-3 {
+    float: right;
+    width: 32%;
+  }
+
+  .footer-wrapper {
+    padding: 0;
+    border: 0;
+  }
+
+  .footer-container {
+    border-top: 1px solid #d8d8d8;
+    margin-top: 87px;
+    padding: 50px 0;
+  }
+
+  .information,
+  .footer-menu,
+  .footer-account,
+  .connect,
+  .update {
+    float: left;
+    padding: 0;
+  }
+
+  .information {
+    width: 25%;
+  }
+
+  .footer-menu {
+    width: 15%;
+  }
+
+  .footer-account {
+    width: 15%;
+  }
+
+  .connect {
+    width: 20%;
+  }
+
+  .update {
+    width: 25%;
+  }
+}

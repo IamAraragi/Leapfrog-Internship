@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/media.css" />
+    <title>Funiro</title>
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header class="header header-bg">
+        <div class="container clearfix">
+          <!-- Logo -->
+          <h2 class="logo">Funiro</h2>
+
+          <!-- Menu -->
+          <nav class="menu">
+            <ul>
+              <li class="menu-items">
+                <a href="">Products</a>
+                <button class="drop-down">
+                  <img src="./images/header/arrow-down.png" alt="arrow-down" />
+                </button>
+              </li>
+              <li class="menu-items">
+                <a href="">Rooms</a>
+                <button class="drop-down">
+                  <img src="./images/header/arrow-down.png" alt="arrow-down" />
+                </button>
+              </li>
+              <li class="menu-items">
+                <a href="">Inspirations</a>
+                <button class="drop-down">
+                  <img src="./images/header/arrow-down.png" alt="arrow-down" />
+                </button>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Search Bar -->
+          <div class="search-bar">
+            <button class="search-icon">
+              <img
+                class="bottom-align"
+                src="./images/header/search-icon.png"
+                alt="search-icon"
+              />
+            </button>
+            <input type="text" placeholder="Search for minimalist chair" />
+          </div>
+
+          <!-- Hamburger Menu -->
+          <div class="hamburger">
+            <img src="./images/header/hamburger.png" alt="" />
+          </div>
+
+          <!-- Header Icons -->
+          <div class="header-icons">
+            <a class="heart-icon header-bg">
+              <img src="./images/header/heart-icon.png" alt="heart-icon" />
+            </a>
+            <a class="cart-icon header-bg">
+              <img src="./images/header/cart-icon.png" alt="cart-icon" />
+            </a>
+            <a class="profile-icon header-bg">
+              <img
+                class="bottom-align"
+                src="./images/header/profile-icon.png"
+                alt="profile-icon"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- Gallery -->
+        <div class="gallery">
+          <div class="gallery-icons clearfix">
+            <div class="container clearfix">
+              <div class="gallery-changer float-r clearfix">
+                <div class="arrow-left float-l">
+                  <buttton class="arrow-left-button float-l"
+                    ><img src="./images/header/arror-left.png" alt="arrow-left"
+                  /></buttton>
+                </div>
+                <div class="arrow-right float-r">
+                  <buttton class="arrow-right-button"
+                    ><img
+                      src="./images/header/arror-right.png"
+                      alt="arrow-right"
+                  /></buttton>
+                </div>
+              </div>
+              <div class="indicator clearfix float-r">
+                <div class="selector-active float-l">
+                  <img
+                    src="./images/header/selector-active.png"
+                    alt="selector-active"
+                  />
+                </div>
+                <div class="selector float-l">
+                  <img src="./images/header/selector.png" alt="selector" />
+                </div>
+                <div class="selector float-l">
+                  <img src="./images/header/selector.png" alt="selector" />
+                </div>
+                <div class="selector float-l">
+                  <img src="./images/header/selector.png" alt="selector" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel clearfix">
+            <div class="carousel-image1">
+              <img
+                class="scaled-image"
+                src="./images/header/furniture_gallery_1.png"
+                alt="furniture"
+              />
+            </div>
+            <div class="carousel-image2">
+              <img
+                class="scaled-image"
+                src="./images/header/furniture_gallery_2.png"
+                alt="furniture"
+              />
+            </div>
+            <div class="carousel-image3">
+              <img
+                class="scaled-image"
+                src="./images/header/furniture_gallery_3.png"
+                alt="furniture"
+              />
+            </div>
+            <div class="header-overlay2">
+              <div class="overlay2-content">
+                <h2 class="header-overlay2-title">Bohauss</h2>
+                <p class="header-overlay2-text">Luxury big sofa 2-seat</p>
+                <p class="header-overlay2-price">Rp 17.000.000</p>
+              </div>
+              <div class="overlay2-arrow">
+                <img
+                  src="./images/header/overlay-arrow.png"
+                  alt="overlay-arrow"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="header-overlay1">
+            <div class="overlay1-content">
+              <h1 class="header-overlay1-title">
+                High-Quality Furniture Just For You
+              </h1>
+              <p class="header-overlay1-text">
+                Our furniture is made from selected and best quality materials
+                that are suitable for your dream home
+              </p>
+              <button class="shop-now">
+                <span class="shop-text">Shop Now</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Features of Furino -->
+      <article class="feature-wrapper">
+        <div class="container clearfix">
+          <div class="feature clearfix">
+            <div class="feature-icon float-l">
+              <img src="./images/features/trophy.png" alt="trophy" />
+            </div>
+            <div class="float-l">
+              <h3 class="feature-text1">High Quality</h3>
+              <div class="feature-text2">crafted from top materials</div>
+            </div>
+          </div>
+          <div class="feature clearfix">
+            <div class="feature-icon float-l">
+              <img src="./images/features/guarantee.png" alt="trophy" />
+            </div>
+            <div class="float-l">
+              <h3 class="feature-text1">Warranty Protection</h3>
+              <div class="feature-text2">Over 2 years</div>
+            </div>
+          </div>
+          <div class="feature clearfix">
+            <div class="feature-icon float-l">
+              <img src="./images/features/shipping.png" alt="shipping" />
+            </div>
+            <div class="float-l">
+              <h3 class="feature-text1">Free Shipping</h3>
+              <div class="feature-text2">Order over 150 $</div>
+            </div>
+          </div>
+          <div class="feature clearfix">
+            <div class="feature-icon float-l">
+              <img
+                src="./images/features/customer-support.png"
+                alt="customer-support"
+              />
+            </div>
+            <div class="float-l">
+              <h3 class="feature-text1">24/7 Support</h3>
+              <div class="feature-text2">Dedicated support</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product Section -->
+      <article class="product-wrapper">
+        <div class="container">
+          <h2 class="heading">Our Products</h2>
+
+          <div class="product-list clearfix">
+            <!-- Product 1 -->
+            <div class="product product-1">
+              <div class="product-image">
+                <img
+                  class="overlay-icon"
+                  src="./images/products/discount-30.png"
+                  alt="discount-30"
+                />
+                <img src="./images/products/product-1.png" alt="product-1" />
+              </div>
+              <div class="product-description">
+                <h3 class="product-name">Syltherine</h3>
+                <div class="product-category">Stylish cafe chair</div>
+                <span class="price">Rp 2.500.000</span>
+                <span class="actual-price">Rp 3.500.00</span>
+              </div>
+              <div class="after">
+                <div class="overlay">
+                  <div class="add-cart">
+                    <button><span class="cart-text">Add to cart</span></button>
+                  </div>
+                  <div class="share">
+                    <div class="share-icon">
+                      <img src="./images/products/share.png" alt="share" />
+                    </div>
+                    <p class="share-text">Share</p>
+                  </div>
+                  <div class="like">
+                    <div class="like-icon">
+                      <img src="./images/products/heart.png" alt="heart" />
+                    </div>
+                    <p class="share-text">Like</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product product-2">
+              <div class="product-image">
+                <img src="./images/products/product-2.png" alt="product-2" />
+              </div>
+              <div class="product-description">
+                <h3 class="product-name">Leviosa</h3>
+                <div class="product-category">Stylish cafe chair</div>
+                <span class="price">Rp 2.500.000</span>
+              </div>
+              <div class="after">
+                <div class="overlay">
+                  <div class="add-cart">
+                    <button><span class="cart-text">Add to cart</span></button>
+                  </div>
+                  <div class="share">
+                    <div class="share-icon">
+                      <img src="./images/products/share.png" alt="share" />
+                    </div>
+                    <p class="share-text">Share</p>
+                  </div>
+                  <div class="like">
+                    <div class="like-icon">
+                      <img src="./images/products/heart.png" alt="heart" />
+                    </div>
+                    <p class="share-text">Like</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product product-3">
+              <div class="product-image">
+                <img
+                  class="overlay-icon"
+                  src="./images/products/discount-50.png"
+                  alt="discount-50"
+                />
+                <img src="./images/products/product-3.png" alt="product-3" />
+              </div>
+              <div class="product-description">
+                <h3 class="product-name">Lolito</h3>
+                <div class="product-category">Luxury big sofa</div>
+                <span class="price">Rp 7.000.000</span>
+                <span class="actual-price">Rp 14.000.00</span>
+              </div>
+              <div class="after">
+                <div class="overlay">
+                  <div class="add-cart">
+                    <button><span class="cart-text">Add to cart</span></button>
+                  </div>
+                  <div class="share">
+                    <div class="share-icon">
+                      <img src="./images/products/share.png" alt="share" />
+                    </div>
+                    <p class="share-text">Share</p>
+                  </div>
+                  <div class="like">
+                    <div class="like-icon">
+                      <img src="./images/products/heart.png" alt="heart" />
+                    </div>
+                    <p class="share-text">Like</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product product-4">
+              <div class="product-image">
+                <img
+                  class="overlay-icon"
+                  src="./images/products/new.png"
+                  alt="new-icon"
+                />
+                <img src="./images/products/product-4.png" alt="product-4" />
+              </div>
+              <div class="product-description">
+                <h3 class="product-name">Respira</h3>
+                <div class="product-category">Minimalist fan</div>
+                <span class="price">Rp 500.000</span>
+              </div>
+              <div class="after">
+                <div class="overlay">
+                  <div class="add-cart">
+                    <button><span class="cart-text">Add to cart</span></button>
+                  </div>
+                  <div class="share">
+                    <div class="share-icon">
+                      <img src="./images/products/share.png" alt="share" />
+                    </div>
+                    <p class="share-text">Share</p>
+                  </div>
+                  <div class="like">
+                    <div class="like-icon">
+                      <img src="./images/products/heart.png" alt="heart" />
+                    </div>
+                    <p class="share-text">Like</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product product-5">
+              <div class="product-image">
+                <img
+                  class="overlay-icon"
+                  src="./images/products/discount-50.png"
+                  alt="discount-50"
+                />
+                <img src="./images/products/product-5.png" alt="product-5" />
+              </div>
+              <div class="product-description">
+                <h3 class="product-name">Grifo</h3>
+                <div class="product-category">Night lamp</div>
+                <span class="price">Rp 1.500.000</span>
+              </div>
+              <div class="after">
+                <div class="overlay">
+                  <div class="add-cart">
+                    <button><span class="cart-text">Add to cart</span></button>
+                  </div>
+                  <div class="share">
+                    <div class="share-icon">
+                      <img src="./images/products/share.png" alt="share" />
+                    </div>
+                    <p class="share-text">Share</p>
+                  </div>
+                  <div class="like">
+                    <div class="like-icon">
+                      <img src="./images/products/heart.png" alt="heart" />
+                    </div>
+                    <p class="share-text">Like</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product product-6">
+              <div class="product-image">
+                <img
+                  class="overlay-icon"
+                  src="./images/products/new.png"
+                  alt="new-icon"
+                />
+                <img src="./images/products/product-6.png" alt="product-6" />
+              </div>
+              <div class="product-description">
+                <h3 class="product-name">Muggo</h3>
+                <div class="product-category">Small mug</div>
+                <span class="price">Rp 150.000</span>
+              </div>
+              <div class="after">
+                <div class="overlay">
+                  <div class="add-cart">
+                    <button><span class="cart-text">Add to cart</span></button>
+                  </div>
+                  <div class="share">
+                    <div class="share-icon">
+                      <img src="./images/products/share.png" alt="share" />
+                    </div>
+                    <p class="share-text">Share</p>
+                  </div>
+                  <div class="like">
+                    <div class="like-icon">
+                      <img src="./images/products/heart.png" alt="heart" />
+                    </div>
+                    <p class="share-text">Like</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product product-7">
+              <div class="product-image">
+                <img
+                  class="overlay-icon"
+                  src="./images/products/discount-50.png"
+                  alt="discount-50"
+                />
+                <img src="./images/products/product-7.png" alt="product-7" />
+              </div>
+              <div class="product-description">
+                <h3 class="product-name">Pingky</h3>
+                <div class="product-category">Cute bed set</div>
+                <span class="price">Rp 7.000.000</span>
+                <span class="actual-price">Rp 14.000.00</span>
+              </div>
+              <div class="after">
+                <div class="overlay">
+                  <div class="add-cart">
+                    <button><span class="cart-text">Add to cart</span></button>
+                  </div>
+                  <div class="share">
+                    <div class="share-icon">
+                      <img src="./images/products/share.png" alt="share" />
+                    </div>
+                    <p class="share-text">Share</p>
+                  </div>
+                  <div class="like">
+                    <div class="like-icon">
+                      <img src="./images/products/heart.png" alt="heart" />
+                    </div>
+                    <p class="share-text">Like</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product product-8">
+              <div class="product-image">
+                <img
+                  class="overlay-icon"
+                  src="./images/products/new.png"
+                  alt="new-icon"
+                />
+                <img src="./images/products/product-8.png" alt="product-8" />
+              </div>
+              <div class="product-description">
+                <h3 class="product-name">Potty</h3>
+                <div class="product-category">Minimalist flower pot</div>
+                <span class="price">Rp 500.000</span>
+              </div>
+              <div class="after">
+                <div class="overlay">
+                  <div class="add-cart">
+                    <button><span class="cart-text">Add to cart</span></button>
+                  </div>
+                  <div class="share">
+                    <div class="share-icon">
+                      <img src="./images/products/share.png" alt="share" />
+                    </div>
+                    <p class="share-text">Share</p>
+                  </div>
+                  <div class="like">
+                    <div class="like-icon">
+                      <img src="./images/products/heart.png" alt="heart" />
+                    </div>
+                    <p class="share-text">Like</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="show-button">
+            <button class="show-more">
+              <span class="button-text">Show More</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Rooms Section -->
+      <article class="room-wrapper">
+        <div class="room-container clearfix">
+          <div class="room-description">
+            <h2 class="title">
+              50+ Beautiful rooms <br />
+              inspiration
+            </h2>
+            <div class="subtitle">
+              Our designer already made a lot of beautiful <br />
+              prototipe of rooms that inspire you
+            </div>
+            <div class="explore-button">
+              <button class="explore-more">
+                <span class="button-text explore-text">Explore More</span>
+              </button>
+            </div>
+          </div>
+          <div class="room1">
+            <img src="./images/rooms/room-1.png" alt="room1" />
+            <div class="room-overlay">
+              <div class="room-overlay-block1">
+                <div class="room-text">
+                  <span class="room-text1">01</span>
+                  <div class="room-text2">
+                    <img src="./images/rooms/line.png" alt="line" />
+                  </div>
+                  <span class="room-text-3">Bedroom</span>
+                </div>
+                <h2 class="room-overlay-title">Inner Peace</h2>
+              </div>
+              <div class="room-overlay-block2">
+                <button class="room-overlay-button">
+                  <img src="./images/rooms/room-arrow.png" alt="room-arrow" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="other-rooms">
+            <div class="room-images clearfix">
+              <div class="room2 float-l">
+                <img src="./images/rooms/room-2.png" alt="room-2" />
+              </div>
+              <div class="room3 float-r">
+                <img src="./images/rooms/room-3.png" alt="room-3" />
+              </div>
+            </div>
+            <div class="room-indicator clearfix">
+              <div class="selector-active float-l">
+                <img
+                  src="./images/header/selector-active.png"
+                  alt="selector-active"
+                />
+              </div>
+              <div class="selector float-l">
+                <img src="./images/header/selector.png" alt="selector" />
+              </div>
+              <div class="selector float-l">
+                <img src="./images/header/selector.png" alt="selector" />
+              </div>
+              <div class="selector float-l">
+                <img src="./images/header/selector.png" alt="selector" />
+              </div>
+            </div>
+          </div>
+
+          <div class="room-arrow-right">
+            <buttton class="room-arrow-right-button"
+              ><img src="./images/header/arror-right.png" alt="arrow-right"
+            /></buttton>
+          </div>
+        </div>
+      </article>
+
+      <!-- Tips and Tricks Section -->
+      <article class="tips-wrapper">
+        <div class="container">
+          <h2 class="heading">Tips & Tricks</h2>
+
+          <div class="tips-main clearfix">
+            <!-- First tip -->
+            <div class="tips-content first-tip">
+              <div class="tips-image">
+                <img src="./images/tips/tips-1.png" alt="tips" />
+              </div>
+              <div class="tips-description">
+                <h3 class="tips-title">
+                  How to create a living <br />
+                  room to love
+                </h3>
+                <div class="tips-date">20 Jan 2020</div>
+              </div>
+              <div class="tip-overlay"></div>
+            </div>
+
+            <!-- Second tip -->
+            <div class="tips-content second-tip">
+              <div class="tips-image">
+                <img src="./images/tips/tips-2.png" alt="tips" />
+              </div>
+              <div class="tips-description">
+                <h3 class="tips-title">
+                  Solution for clear look working space
+                </h3>
+                <div class="tips-date">10 Jan 2020</div>
+              </div>
+              <div class="tip-overlay"></div>
+            </div>
+
+            <!-- Third tip -->
+            <div class="tips-content third-tip">
+              <div class="tips-image">
+                <img src="./images/tips/tips-3.png" alt="tips" />
+              </div>
+              <div class="tips-description">
+                <h3 class="tips-title">
+                  Make your cooking activity more fun with good setup
+                </h3>
+                <div class="tips-date">20 Jan 2020</div>
+              </div>
+              <div class="tip-overlay"></div>
+            </div>
+
+            <div class="tips-arrow-right">
+              <buttton class="tip-arrow-right-button"
+                ><img src="./images/header/arror-right.png" alt="arrow-right"
+              /></buttton>
+            </div>
+          </div>
+
+          <div class="tips-indicator clearfix">
+            <div class="selector float-l">
+              <img src="./images/header/selector.png" alt="selector" />
+            </div>
+            <div class="selector-active float-l">
+              <img
+                src="./images/header/selector-active.png"
+                alt="selector-active"
+              />
+            </div>
+            <div class="selector float-l">
+              <img src="./images/header/selector.png" alt="selector" />
+            </div>
+            <div class="selector float-l">
+              <img src="./images/header/selector.png" alt="selector" />
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Inspiration Section -->
+      <article class="inspiration-wrapper">
+        <div class="inspiration-container">
+          <div class="inspiration-heading">
+            <div class="inspiration-title">Share your setup with</div>
+            <h2 class="inspiration-hashtag">#FuniroFurniture</h2>
+          </div>
+          <div class="inspiration-content clearfix">
+            <!-- Image Block 1 -->
+            <div class="block-1">
+              <div class="subblock-1 clearfix">
+                <div class="inspiration-image1 float-l">
+                  <img
+                    src="./images/inspiration/inspiration-image1.png"
+                    alt="inspiration"
+                  />
+                </div>
+                <div class="inspiration-image2 float-r">
+                  <img
+                    src="./images/inspiration/inspiration-image2.png"
+                    alt="inspiration"
+                  />
+                </div>
+              </div>
+              <div class="subblock-2 clearfix">
+                <div class="inspiration-image3 float-l">
+                  <img
+                    src="./images/inspiration/inspiration-image3.png"
+                    alt="inspiration"
+                  />
+                </div>
+                <div class="inspiration-image4 float-r">
+                  <img
+                    src="./images/inspiration/inspiration-image4.png"
+                    alt="inspiration"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Image Block 2 -->
+            <div class="block-2">
+              <div class="inspiration-image5">
+                <img
+                  src="./images/inspiration/inspiration-image5.png"
+                  alt="inspiration"
+                />
+              </div>
+            </div>
+
+            <!-- Image Block 3 -->
+            <div class="block-3">
+              <div class="subblock-1 clearfix">
+                <div class="inspiration-image6 float-l">
+                  <img
+                    src="./images/inspiration/inspiration-image6.png"
+                    alt="inspiration"
+                  />
+                </div>
+                <div class="inspiration-image7 float-r">
+                  <img
+                    src="./images/inspiration/inspiration-image7.png"
+                    alt="inspiration"
+                  />
+                </div>
+              </div>
+              <div class="subblock-2 clearfix">
+                <div class="inspiration-image8 float-l">
+                  <img
+                    src="./images/inspiration/inspiration-image8.png"
+                    alt="inspiration"
+                  />
+                </div>
+                <div class="inspiration-image9 float-r">
+                  <img
+                    src="./images/inspiration/inspiration-image9.png"
+                    alt="inspiration"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Foooter -->
+      <footer class="footer-wrapper">
+        <div class="footer-container clearfix">
+          <!-- Information -->
+          <div class="information">
+            <h2 class="footer-heading">Funiro</h2>
+            <p class="descp">
+              Worldwide furniture store since <br />
+              2020. We sell over 1000+ branded <br />
+              products on our website
+            </p>
+            <div class="address clearfix">
+              <div class="gps-icon float-l">
+                <img src="./images/footer/gps.png" alt="gps" />
+              </div>
+              <div class="address-text float-l">
+                Sawojajar Malang, Indonesia
+              </div>
+            </div>
+            <div class="phone clearfix">
+              <div class="phone-icon float-l">
+                <img src="./images/footer/phone.png" alt="phone" />
+              </div>
+              <div class="phone-text float-l">+6289 456 3455</div>
+            </div>
+            <a class="website" href="">www.funiro.com</a>
+          </div>
+
+          <!-- Menu -->
+          <div class="footer-menu">
+            <h2 class="footer-heading">Menu</h2>
+            <ul>
+              <li class="footer-menu-items"><a href="">Products</a></li>
+              <li class="footer-menu-items"><a href="">Rooms</a></li>
+              <li class="footer-menu-items"><a href="">Inspirations</a></li>
+              <li class="footer-menu-items"><a href="">About Us</a></li>
+              <li class="footer-menu-items"><a href="">Terms & Policy</a></li>
+            </ul>
+          </div>
+
+          <!-- Account -->
+          <div class="footer-account">
+            <h2 class="footer-heading">Account</h2>
+            <ul>
+              <li class="footer-account-items"><a href="">My Account</a></li>
+              <li class="footer-account-items"><a href="">Checkout</a></li>
+              <li class="footer-account-items"><a href="">My Cart</a></li>
+              <li class="footer-account-items"><a href="">My Catalog</a></li>
+            </ul>
+          </div>
+
+          <!-- Stay Connected -->
+          <div class="connect">
+            <h2 class="footer-heading">Stay Connected</h2>
+            <ul>
+              <li class="footer-connect-items"><a href="">Facebook</a></li>
+              <li class="footer-connect-items"><a href="">Instagram</a></li>
+              <li class="footer-connect-items"><a href="">Twitter</a></li>
+            </ul>
+          </div>
+
+          <!-- Stay Updated -->
+          <div class="update">
+            <h2 class="email">Stay Updated</h2>
+            <input type="text" placeholder="Enter your Email" />
+            <button class="update-button">
+              <img src="./images/footer/arrow.png" alt="arrow" />
+            </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
