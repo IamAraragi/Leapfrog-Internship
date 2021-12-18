@@ -16,10 +16,10 @@
       <header class="header header-bg">
         <div class="container clearfix">
           <!-- Logo -->
-          <h2 class="logo">Funiro</h2>
+          <a href=""><h2 class="logo">Funiro.</h2></a>
 
           <!-- Menu -->
-          <nav class="menu">
+          <div class="menu" id="menu-id">
             <ul>
               <li class="menu-items">
                 <a href="">Products</a>
@@ -40,7 +40,7 @@
                 </button>
               </li>
             </ul>
-          </nav>
+          </div>
 
           <!-- Search Bar -->
           <div class="search-bar">
@@ -51,23 +51,31 @@
                 alt="search-icon"
               />
             </button>
-            <input type="text" placeholder="Search for minimalist chair" />
+            <input
+              class="search-bar-input"
+              type="text"
+              placeholder="Search for minimalist chair"
+            />
           </div>
 
           <!-- Hamburger Menu -->
-          <div class="hamburger">
+          <div
+            class="hamburger"
+            onmouseover="document.getElementById('menu-id').style.display='inline-block';"
+            onmouseout="document.getElementById('menu-id').style.display='none';"
+          >
             <img src="./images/header/hamburger.png" alt="" />
           </div>
 
           <!-- Header Icons -->
           <div class="header-icons">
-            <a class="heart-icon header-bg">
+            <a class="heart-icon">
               <img src="./images/header/heart-icon.png" alt="heart-icon" />
             </a>
-            <a class="cart-icon header-bg">
+            <a class="cart-icon">
               <img src="./images/header/cart-icon.png" alt="cart-icon" />
             </a>
-            <a class="profile-icon header-bg">
+            <a class="profile-icon">
               <img
                 class="bottom-align"
                 src="./images/header/profile-icon.png"
@@ -83,16 +91,42 @@
             <div class="container clearfix">
               <div class="gallery-changer float-r clearfix">
                 <div class="arrow-left float-l">
-                  <buttton class="arrow-left-button float-l"
-                    ><img src="./images/header/arror-left.png" alt="arrow-left"
-                  /></buttton>
+                  <buttton class="arrow-button float-l">
+                    <svg
+                      class="arrow-svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14.9999 5L7.99988 12L14.9999 19"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </buttton>
                 </div>
                 <div class="arrow-right float-r">
-                  <buttton class="arrow-right-button"
-                    ><img
-                      src="./images/header/arror-right.png"
-                      alt="arrow-right"
-                  /></buttton>
+                  <buttton class="arrow-button">
+                    <svg
+                      class="arrow-svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.00012 5L16.0001 12L9.00012 19"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </buttton>
                 </div>
               </div>
               <div class="indicator clearfix float-r">
@@ -169,8 +203,8 @@
 
       <!-- Features of Furino -->
       <article class="feature-wrapper">
-        <div class="container clearfix">
-          <div class="feature clearfix">
+        <div class="feature-container clearfix">
+          <div class="feature feature-1">
             <div class="feature-icon float-l">
               <img src="./images/features/trophy.png" alt="trophy" />
             </div>
@@ -179,34 +213,40 @@
               <div class="feature-text2">crafted from top materials</div>
             </div>
           </div>
-          <div class="feature clearfix">
-            <div class="feature-icon float-l">
-              <img src="./images/features/guarantee.png" alt="trophy" />
-            </div>
-            <div class="float-l">
-              <h3 class="feature-text1">Warranty Protection</h3>
-              <div class="feature-text2">Over 2 years</div>
-            </div>
-          </div>
-          <div class="feature clearfix">
-            <div class="feature-icon float-l">
-              <img src="./images/features/shipping.png" alt="shipping" />
-            </div>
-            <div class="float-l">
-              <h3 class="feature-text1">Free Shipping</h3>
-              <div class="feature-text2">Order over 150 $</div>
+          <div class="feature feature-2">
+            <div class="block clearfix">
+              <div class="feature-icon float-l">
+                <img src="./images/features/guarantee.png" alt="trophy" />
+              </div>
+              <div class="float-l">
+                <h3 class="feature-text1">Warranty Protection</h3>
+                <div class="feature-text2">Over 2 years</div>
+              </div>
             </div>
           </div>
-          <div class="feature clearfix">
-            <div class="feature-icon float-l">
-              <img
-                src="./images/features/customer-support.png"
-                alt="customer-support"
-              />
+          <div class="feature feature-3">
+            <div class="block clearfix">
+              <div class="feature-icon float-l">
+                <img src="./images/features/shipping.png" alt="shipping" />
+              </div>
+              <div class="float-l">
+                <h3 class="feature-text1">Free Shipping</h3>
+                <div class="feature-text2">Order over 150 $</div>
+              </div>
             </div>
-            <div class="float-l">
-              <h3 class="feature-text1">24/7 Support</h3>
-              <div class="feature-text2">Dedicated support</div>
+          </div>
+          <div class="feature feature-4">
+            <div class="block clearfix">
+              <div class="feature-icon float-l">
+                <img
+                  src="./images/features/customer-support.png"
+                  alt="customer-support"
+                />
+              </div>
+              <div class="float-l">
+                <h3 class="feature-text1">24/7 Support</h3>
+                <div class="feature-text2">Dedicated support</div>
+              </div>
             </div>
           </div>
         </div>
@@ -640,6 +680,12 @@
                 ><img src="./images/header/arror-right.png" alt="arrow-right"
               /></buttton>
             </div>
+
+            <div class="tips-arrow-left">
+              <buttton class="tip-arrow-left-button"
+                ><img src="./images/header/arror-left.png" alt="arrow-left"
+              /></buttton>
+            </div>
           </div>
 
           <div class="tips-indicator clearfix">
@@ -752,7 +798,7 @@
         <div class="footer-container clearfix">
           <!-- Information -->
           <div class="information">
-            <h2 class="footer-heading">Funiro</h2>
+            <h2 class="footer-heading">Funiro.</h2>
             <p class="descp">
               Worldwide furniture store since <br />
               2020. We sell over 1000+ branded <br />

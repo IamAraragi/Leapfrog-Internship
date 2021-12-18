@@ -1,10 +1,7 @@
 @media screen and (min-width: 768px) {
-  .container {
-    width: 86%;
-    margin: 0 auto;
-  }
-
-  .footer-container {
+  .container,
+  .footer-container,
+  .feature-container {
     width: 86%;
     margin: 0 auto;
   }
@@ -64,6 +61,11 @@
     margin-left: 32px;
   }
 
+  .room-description {
+    display: table;
+    margin: 0 auto;
+  }
+
   .second-tip {
     display: block;
   }
@@ -75,6 +77,14 @@
 
   .second-tip {
     margin-left: 19px;
+  }
+
+  .tip-arrow-right-button {
+    transform: translate(30%, -50%);
+  }
+
+  .tip-arrow-left-button {
+    transform: translate(-30%, -50%);
   }
 
   .information,
@@ -94,9 +104,13 @@
     padding-top: 0;
     vertical-align: top;
   }
+
+  .update input {
+    width: 242px;
+  }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1024px) {
   .room-description {
     float: left;
     padding: 223px 86px 0 100px;
@@ -112,6 +126,12 @@
 }
 
 @media screen and (min-width: 1400px) {
+  .feature-container {
+    width: 92%;
+    margin: 0 auto;
+    padding-left: 4%;
+  }
+
   .menu {
     display: block;
     float: left;
@@ -131,6 +151,13 @@
     padding: 0;
   }
 
+  .header-overlay1 {
+    position: absolute;
+    width: 34%;
+    top: 10%;
+    left: 10%;
+  }
+
   .arrow-right {
     padding: 0;
   }
@@ -142,17 +169,24 @@
   .carousel-image3 {
     padding-left: 32px;
   }
-
-  .header-overlay1 {
-    position: absolute;
-    width: 34%;
-    top: 10%;
-    left: 10%;
-  }
-
   .feature {
     float: left;
     width: 25%;
+  }
+
+  .feature-1,
+  .feature-2,
+  .feature-3,
+  .feature-4 {
+    text-align: center;
+  }
+
+  .block {
+    display: inline-block;
+  }
+
+  .feature:first-child {
+    padding-left: 0;
   }
 
   .feature-wrapper {

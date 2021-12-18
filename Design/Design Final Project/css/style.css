@@ -41,15 +41,20 @@ body {
 .logo {
   font-size: 24px;
   float: left;
-  padding: 5px 0 0 10px;
+  margin: 5px 0 0 10px;
 }
 
 .menu {
   display: none;
 }
 
+.menu-items {
+  list-style: none;
+}
+
 .menu-items a {
   text-decoration: none;
+  color: #3a3a3a;
 }
 
 .drop-down {
@@ -78,9 +83,13 @@ body {
   vertical-align: bottom;
 }
 
-.search-bar input {
+.search-bar-input {
   border: 0;
   height: 30px;
+}
+
+.search-bar-input:focus {
+  outline: none;
 }
 
 .header-icons {
@@ -146,18 +155,23 @@ body {
   padding-right: 16px;
 }
 
-.arrow-left-button {
+.arrow-button {
   display: inline-block;
-  padding: 12px;
+  padding: 10px 12px 10px 12px;
   border-radius: 30px;
   background-color: #f6ddc6;
 }
 
-.arrow-right-button {
-  display: inline-block;
-  padding: 12px;
-  border-radius: 30px;
-  background-color: #f6ddc6;
+.arrow-svg {
+  stroke: #e89f71;
+}
+
+.arrow-button:hover {
+  background-color: #e89f71;
+}
+
+.arrow-button:hover .arrow-svg {
+  stroke: #ffffff;
 }
 
 /* Carousel */
@@ -201,6 +215,11 @@ body {
   border: 0;
 }
 
+.shop-now:hover {
+  background-color: #ffffff;
+  color: #e89f71;
+}
+
 .header-overlay2 {
   background: rgba(255, 255, 255, 0.72);
   display: none;
@@ -208,6 +227,7 @@ body {
   /* width: 32%; */
   top: 25%;
   left: 0;
+  padding: 24px;
 }
 
 .header-overlay2-title {
@@ -262,6 +282,7 @@ body {
   font-size: 16px;
   font-weight: 500;
   line-height: 150%;
+  color: #898989;
 }
 
 /* Product Section */
@@ -369,6 +390,7 @@ body {
   font-size: 16px;
   font-weight: 500;
   line-height: 150%;
+  color: #898989;
 }
 
 .price {
@@ -382,6 +404,7 @@ body {
   font-weight: 500;
   line-height: 150%;
   text-decoration: line-through;
+  color: #b0b0b0;
 }
 
 .show-button {
@@ -394,6 +417,11 @@ body {
   border: 1px solid #e89f71;
   padding: 12px 0;
   color: #e89f71;
+}
+
+.show-more:hover {
+  background-color: #e89f71;
+  color: #ffffff;
 }
 
 .button-text {
@@ -413,7 +441,7 @@ body {
 }
 
 .room-description {
-  padding: 44px 0 44px 0;
+  padding: 44px 0 44px 16px;
 }
 
 .title {
@@ -431,15 +459,15 @@ body {
 
 .explore-more {
   width: 176px;
-  background-color: #ffffff;
+  background-color: #e89f71;
   border: 0;
   padding: 12px 0;
-  color: #e89f71;
+  color: #ffffff;
 }
 
 .explore-more:hover {
-  background-color: #e89f71;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #e89f71;
 }
 
 .room-indicator {
@@ -458,6 +486,10 @@ body {
   top: 50%;
   right: 0;
   transform: translate(0, -50%);
+}
+
+.room-arrow-right-button:hover {
+  background-color: #f6ddc6;
 }
 
 .room-images {
@@ -579,7 +611,27 @@ body {
   box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.16);
   top: 50%;
   right: 0;
-  transform: translate(30%, -50%);
+  transform: translate(-10%, -50%);
+}
+
+.tip-arrow-right-button:hover {
+  background-color: #f6ddc6;
+}
+
+.tip-arrow-left-button {
+  position: absolute;
+  display: inline-block;
+  border-radius: 30px;
+  padding: 12px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.16);
+  top: 50%;
+  left: 0;
+  transform: translate(10%, -50%);
+}
+
+.tip-arrow-left-button:hover {
+  background-color: #f6ddc6;
 }
 
 /* Inspiration Section */
@@ -703,7 +755,7 @@ body {
 
 .update-button {
   border: 0;
-  width: 40px;
+  padding: 10px;
   background-color: #e89f71;
   display: inline-block;
   vertical-align: bottom;

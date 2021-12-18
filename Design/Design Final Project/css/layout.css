@@ -6,7 +6,8 @@
   width: 100%;
 }
 
-.container {
+.container,
+.feature-container {
   width: 100%;
 }
 
