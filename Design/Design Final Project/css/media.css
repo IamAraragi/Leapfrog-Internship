@@ -1,3 +1,5 @@
+/* Meadia Query for screen greater than 768px */
+
 @media screen and (min-width: 768px) {
   .container,
   .footer-container,
@@ -110,6 +112,8 @@
   }
 }
 
+/* Meadia Query for screen greater than 1024px */
+
 @media screen and (min-width: 1024px) {
   .room-description {
     float: left;
@@ -125,11 +129,12 @@
   }
 }
 
+/* Meadia Query for screen greater than 1400px */
 @media screen and (min-width: 1400px) {
   .feature-container {
     width: 92%;
     margin: 0 auto;
-    padding-left: 4%;
+    padding-left: 3%;
   }
 
   .menu {
@@ -149,6 +154,10 @@
 
   .header-icons {
     padding: 0;
+  }
+
+  .drop-down {
+    display: inline-block;
   }
 
   .header-overlay1 {
