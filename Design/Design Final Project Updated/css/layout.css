@@ -1,0 +1,21 @@
+.main-wrapper {
+  min-width: 100%;
+}
+
+.header {
+  width: 100%;
+}
+
+.container,
+.feature-container {
+  width: 100%;
+}
+
+.footer-container {
+  width: 100%;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
