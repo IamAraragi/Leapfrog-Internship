@@ -1,0 +1,370 @@
+/* Meadia Query for screen greater than 768px */
+
+@media screen and (min-width: 768px) {
+  .container,
+  .footer-container,
+  .feature-container {
+    width: 86%;
+    margin: 0 auto;
+  }
+
+  .search-bar {
+    display: block;
+    float: left;
+    width: 33%;
+    margin-left: 11%;
+  }
+
+  .carousel {
+    position: relative;
+  }
+
+  .header-overlay2 {
+    display: block;
+    position: absolute;
+    top: 64%;
+    left: 59%;
+  }
+
+  .carousel-image1 {
+    display: block;
+    width: 26%;
+    float: left;
+  }
+
+  .carousel-image1 img {
+    height: 443px;
+    object-fit: cover;
+    object-position: 100% 0;
+  }
+
+  .carousel-image2 {
+    width: 64.5%;
+    float: left;
+    padding-left: 17px;
+  }
+
+  .carousel-image3 {
+    display: block;
+    width: 4.67%;
+    float: right;
+    padding-left: 17px;
+  }
+
+  .carousel-image2 img {
+    height: 443px;
+  }
+
+  .carousel-image3 img {
+    height: 443px;
+    object-fit: cover;
+    object-position: 0 100%;
+  }
+
+  .feature {
+    float: left;
+    width: 50%;
+  }
+
+  .product {
+    float: left;
+    width: 47%;
+    padding-top: 0px;
+  }
+
+  .product-2,
+  .product-4,
+  .product-6,
+  .product-8 {
+    margin-left: 32px;
+  }
+
+  .room-description {
+    display: table;
+    margin: 0 auto;
+  }
+
+  .second-tip {
+    display: block;
+  }
+
+  .tips-content {
+    float: left;
+    width: 48.5%;
+  }
+
+  .second-tip {
+    margin-left: 19px;
+  }
+
+  .tip-arrow-right-button {
+    transform: translate(30%, -50%);
+  }
+
+  .tip-arrow-left-button {
+    transform: translate(-30%, -50%);
+  }
+
+  .information,
+  .footer-menu,
+  .footer-account,
+  .connect,
+  .update {
+    display: inline-block;
+    padding-right: 40px;
+    padding-bottom: 50px;
+  }
+
+  .footer-menu,
+  .footer-account,
+  .connect,
+  .update {
+    padding-top: 0;
+    vertical-align: top;
+  }
+
+  .update input {
+    width: 242px;
+  }
+}
+
+/* Meadia Query for screen greater than 1024px */
+
+@media screen and (min-width: 1024px) {
+  .carousel-image1 img {
+    height: 623px;
+  }
+
+  .carousel-image2 img {
+    height: 623px;
+  }
+
+  .carousel-image3 img {
+    height: 623px;
+  }
+
+  .room-description {
+    float: left;
+    padding: 223px 86px 0 100px;
+  }
+
+  .room1 {
+    float: right;
+  }
+
+  .other-rooms {
+    clear: both;
+  }
+}
+
+/* Meadia Query for screen greater than 1400px */
+@media screen and (min-width: 1400px) {
+  .feature-container {
+    width: 92%;
+    margin: 0 auto;
+    padding-left: 3%;
+  }
+
+  .menu {
+    display: block;
+    float: left;
+    margin: 10px 0 0 20px;
+  }
+
+  .menu-items {
+    display: inline-block;
+    padding: 0 20px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .header-icons {
+    padding: 0;
+  }
+
+  .drop-down {
+    display: inline-block;
+  }
+
+  .header-overlay1 {
+    position: absolute;
+    width: 34%;
+    top: 10%;
+    left: 10%;
+  }
+
+  .arrow-right {
+    padding: 0;
+  }
+
+  .carousel-image2 {
+    padding-left: 32px;
+  }
+
+  .carousel-image3 {
+    padding-left: 16px;
+  }
+  .feature {
+    float: left;
+    width: 25%;
+  }
+
+  .feature-1,
+  .feature-2,
+  .feature-3,
+  .feature-4 {
+    text-align: center;
+  }
+
+  .block {
+    display: inline-block;
+  }
+
+  .feature:first-child {
+    padding-left: 0;
+  }
+
+  .feature-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .product {
+    float: left;
+    width: 23%;
+  }
+
+  .product-3,
+  .product-7 {
+    margin-left: 32px;
+  }
+
+  .room-images {
+    display: block;
+  }
+
+  .room-description {
+    float: left;
+    width: 26%;
+    padding: 221px 86px 0 100px;
+  }
+
+  .room1 {
+    position: relative;
+    float: left;
+    width: 27%;
+    margin-right: 26px;
+    margin-bottom: 44px;
+  }
+
+  .room-2 {
+    width: 81%;
+  }
+
+  .room3 {
+    width: 15.5%;
+  }
+
+  .room3 img {
+    height: 486px;
+    object-fit: cover;
+    object-position: 0 100%;
+  }
+
+  .other-rooms {
+    clear: none;
+  }
+
+  .room-overlay {
+    display: block;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+  }
+
+  .other-rooms {
+    float: right;
+    width: 31.5%;
+  }
+
+  .room-indicator {
+    margin: 0;
+    padding-top: 40px;
+  }
+
+  .room-arrow-right-button {
+    right: 5%;
+  }
+
+  .tips-content {
+    float: left;
+    width: 32%;
+  }
+
+  .third-tip {
+    display: block;
+    margin-left: 25px;
+  }
+
+  .block-1 {
+    float: left;
+    width: 46.5%;
+  }
+
+  .block-2 {
+    float: left;
+    width: 21.2%;
+    padding-top: 200px;
+  }
+
+  .block-2 img {
+    height: 392px;
+  }
+
+  .block-3 {
+    float: right;
+    width: 30%;
+  }
+
+  .footer-wrapper {
+    padding: 0;
+    border: 0;
+  }
+
+  .footer-container {
+    border-top: 1px solid #d8d8d8;
+    margin-top: 87px;
+    padding: 50px 0;
+  }
+
+  .information,
+  .footer-menu,
+  .footer-account,
+  .connect,
+  .update {
+    float: left;
+    padding: 0;
+  }
+
+  .information {
+    width: 25%;
+  }
+
+  .footer-menu {
+    width: 15%;
+  }
+
+  .footer-account {
+    width: 15%;
+  }
+
+  .connect {
+    width: 20%;
+  }
+
+  .update {
+    width: 25%;
+  }
+}
