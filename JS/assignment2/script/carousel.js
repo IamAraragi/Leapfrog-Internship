@@ -42,8 +42,6 @@ class ImageSlider {
   positionImages() {
     for (let i = 0; i < this.numberOfImages; i++) {
       this.images[i].style.position = 'absolute';
-      this.images[i].style.width = this.imageWidth + 'px';
-      this.images[i].style.height = this.imageHeight + 'px';
       this.images[i].style.left = i * this.imageWidth + 'px';
     }
   }
@@ -112,11 +110,11 @@ class ImageSlider {
   createPrevButton() {
     let prevButton = document.createElement('button');
     prevButton.innerHTML = '&larr;';
-    prevButton.style.width = '30px';
-    prevButton.style.height = '30px';
-    prevButton.style.background = '#ffffff';
+    prevButton.style.width = '40px';
+    prevButton.style.height = '50px';
+    prevButton.style.background = 'gray';
     prevButton.style.border = 'none';
-    prevButton.style.opacity = '0.5';
+    prevButton.style.opacity = '0.8';
     prevButton.style.position = 'absolute';
     prevButton.style.top = '50%';
     prevButton.style.transform = 'translate(0, -50%)';
@@ -131,11 +129,11 @@ class ImageSlider {
   createNextButton() {
     let nextButton = document.createElement('button');
     nextButton.innerHTML = '&rarr;';
-    nextButton.style.width = '30px';
-    nextButton.style.height = '30px';
-    nextButton.style.background = '#ffffff';
+    nextButton.style.width = '40px';
+    nextButton.style.height = '50px';
+    nextButton.style.background = 'gray';
     nextButton.style.border = 'none';
-    nextButton.style.opacity = '0.5';
+    nextButton.style.opacity = '0.8';
     nextButton.style.position = 'absolute';
     nextButton.style.right = '0';
     nextButton.style.top = '50%';
