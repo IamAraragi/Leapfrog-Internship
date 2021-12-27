@@ -32,9 +32,9 @@ class Ant {
    * method to move the ant object
    */
   move() {
+    this.checkCollisonBoundary();
     this.x += this.speed * this.dx;
     this.y += this.speed * this.dy;
-    this.checkCollisonBoundary();
   }
 
   /**

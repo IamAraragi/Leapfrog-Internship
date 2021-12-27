@@ -36,9 +36,9 @@ class Ball {
    * method to move the ball object
    */
   move() {
+    this.checkCollisonBoundary();
     this.x += this.vx * this.dx;
     this.y += this.vy * this.dy;
-    this.checkCollisonBoundary();
     this.checkCollisionBalls();
   }
 
@@ -46,13 +46,13 @@ class Ball {
    * method to check collison of the ball to the boundary
    */
   checkCollisonBoundary() {
-    if (this.x <= this.radius || this.x >= canvasWidth - this.radius) {
+    if (this.x < this.radius || this.x > canvasWidth - this.radius) {
       this.dx = -this.dx;
-      this.x += this.vx * this.dx;
+      this.x += this.dx;
     }
-    if (this.y <= this.radius || this.y >= canvasHeight - this.radius) {
+    if (this.y < this.radius || this.y > canvasHeight - this.radius) {
       this.dy = -this.dy;
-      this.y += this.vy * this.dy;
+      this.y += this.dy;
     }
   }
 
@@ -68,7 +68,6 @@ class Ball {
         );
         let length = this.radius + ball.radius;
 
-        // console.log(speed);
         if (distance < this.radius + ball.radius) {
           this.dx = -this.dx;
           this.dy = -this.dy;
