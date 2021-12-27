@@ -2,7 +2,7 @@ const canvas = document.getElementById('myCanvas');
 const canvasWidth = document.body.clientWidth;
 const canvasHeight = document.body.clientHeight;
 
-const BALL_COUNT = 50;
+const BALL_COUNT = 1000;
 let balls = [];
 
 class BallCollision {
@@ -30,11 +30,11 @@ class BallCollision {
    */
   generateBalls() {
     for (let i = 0; i < BALL_COUNT; i++) {
-      let radius = getRandomValue(10, 15);
+      let radius = getRandomValue(5, 10);
       let posX = getRandomValue(radius, this.canvasWidth - radius);
       let posY = getRandomValue(radius, this.canvasHeight - radius);
-      let vx = getRandomValue(2, 6);
-      let vy = getRandomValue(2, 6);
+      let vx = getRandomValue(1, 2);
+      let vy = getRandomValue(1, 2);
       const ball = new Ball(this.ctx, posX, posY, radius, vx, vy);
       balls.push(ball);
     }
