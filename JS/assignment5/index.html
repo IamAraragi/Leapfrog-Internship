@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="game-wrapper">
+      <canvas id="myCanvas"></canvas>
+
+      <div class="start-screen-wrapper" id="startScreenWrapper">
+        <div class="start-screen" id="startScreen">
+          <h1 class="game-name">CAR LANE GAME</h1>
+          <p class="game-instruction">
+            "Left Arrow" to move left <br />"Right Arrow" to move right <br />
+            "Space" to fire bullets
+          </p>
+          <button class="play-button" id="playButton">PLAY</button>
+        </div>
+        <div class="end-screen" id="endScreen">
+          <h1 class="game-name">YOU DIED!!!</h1>
+          <p class="game-instruction" id="scorePragraph"></p>
+        </div>
+      </div>
+    </div>
+    <script src="./script/road.js"></script>
+    <script src="./script/obstacle.js"></script>
+    <script src="./script/car.js"></script>
+    <script src="./script/bullet.js"></script>
+    <script src="./script/utils.js"></script>
+    <script src="./script/inputHandler.js"></script>
+    <script src="./script/game.js"></script>
+  </body>
+</html>
