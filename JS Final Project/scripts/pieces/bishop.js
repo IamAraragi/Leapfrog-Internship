@@ -25,5 +25,6 @@ export default class Bishop {
         piece = this.board.pieces[targetSquare];
       }
     }
+    return false;
   }
 }

@@ -39,7 +39,11 @@ const CONSTANT = {
     KNIGHT_ATTACKS: [-8, -19,	-21, -12, 8, 19, 21, 12],
     BISHOP_ATTACKS: [-9, -11, 11, 9],
     ROOK_ATTACKS: [-1, -10,	1, 10],
-    KING_ATTACKS: [-1, -9, -10, -11, 1, 9, 10, 11]
+    KING_ATTACKS: [-1, -9, -10, -11, 1, 9, 10, 11],
+
+    FLAG_PAWN_START: 0x80000,
+    FLAG_CASTLE: 0x1000000,
+    FLAG_ENPASSANT: 0x40000,
   }
   
   export default CONSTANT

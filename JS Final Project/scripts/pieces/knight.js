@@ -16,9 +16,9 @@ export default class Knight {
         piece !== CONSTANT.SQUARES.OFFBOARD &&
         getPieceColor(piece) === side
       ) {
-        console.log(piece);
         return true;
       }
     }
+    return false;
   }
 }

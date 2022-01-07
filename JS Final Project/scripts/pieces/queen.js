@@ -25,5 +25,6 @@ export default class Queen {
         piece = this.board.pieces[targetSquare];
       }
     }
+    return false;
   }
 }

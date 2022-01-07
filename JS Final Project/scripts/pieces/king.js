@@ -18,5 +18,6 @@ export default class King {
         return true;
       }
     }
+    return false;
   }
 }

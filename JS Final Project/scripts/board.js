@@ -3,6 +3,8 @@ import {
   getSquareFromFileAndRank,
   square64To120,
   getPieceColor,
+  getFromSquare,
+  getToSquare,
 } from './utils.js';
 
 import Pawn from './pieces/pawn.js';
@@ -22,18 +24,33 @@ export default class Board {
     this.pieceList = [];
     this.filesBoard = [];
     this.ranksBoard = [];
-    this.zobristKey = 0;
     this.maximunSinglePiece = 14;
     this.material = [];
+    this.moveList = [];
+    this.ply = 0;
   }
 
   initialize() {
     this.initializeFilesAndRanksBoard();
-    this.parseFEN('q3k2b/8/3n4/8/8/8/8/R3K2R b KQkq - 0 1');
+    // this.parseFEN('r6r/1b2k1bq/8/8/7B/8/8/R3K2R b KQ - 3 2');
+    this.parseFEN('8/1k6/8/8/8/8/8/K7 b - - 3 2');
     this.renderBoard();
     this.getPieceList();
-    // this.printPieceLists();
     this.renderAttackedBoard();
+  }
+
+  reset() {
+    for (let i = 0; i < CONSTANT.TOTAL_SQUARES; i++) {
+      this.pieces[i] = CONSTANT.SQUARES.OFFBOARD;
+    }
+
+    for (let i = 0; i < 64; i++) {
+      this.pieces[square64To120] = CONSTANT.PIECES.empty;
+    }
+
+    this.enPassant = CONSTANT.SQUARES.NO_SQ;
+    this.ply = 0;
+    this.castle = 0;
   }
 
   initializeFilesAndRanksBoard() {
@@ -59,9 +76,6 @@ export default class Board {
         this.ranksBoard[square] = rank;
       }
     }
-
-    // console.log('FilesBoard: ' + this.filesBoard);
-    // console.log('RanksBoard: ' + this.ranksBoard);
   }
 
   getPieceList() {
@@ -138,6 +152,7 @@ export default class Board {
   }
 
   parseFEN(fen) {
+    this.reset();
     let piece = 0;
     let count = 0;
     let rank = CONSTANT.RANKS.RANK_8;
@@ -223,17 +238,21 @@ export default class Board {
     } else {
       this.side = CONSTANT.BLACK;
     }
-
     for (let i = 0; i < fenString[2].length; i++) {
-      switch (fenString[0][i]) {
+      switch (fenString[2][i]) {
         case 'K':
-          this.castle = CONSTANT.CASTLE.WHITE_KING_CASTLE;
+          this.castle |= CONSTANT.CASTLE.WHITE_KING_CASTLE;
+          break;
         case 'Q':
-          this.castle = CONSTANT.CASTLE.WHITE_QUEEN_CASTLE;
+          console.log('b');
+          this.castle |= CONSTANT.CASTLE.WHITE_QUEEN_CASTLE;
+          break;
         case 'k':
-          this.castle = CONSTANT.CASTLE.BLACK_KING_CASTLE;
+          this.castle |= CONSTANT.CASTLE.BLACK_KING_CASTLE;
+          break;
         case 'q':
-          this.castle = CONSTANT.CASTLE.BLACK_QUEEN_CASTLE;
+          this.castle |= CONSTANT.CASTLE.BLACK_QUEEN_CASTLE;
+          break;
         case '-':
           continue;
       }
@@ -294,5 +313,27 @@ export default class Board {
       line += ' ' + CONSTANT.FILE_CHARACTER[file];
     }
     console.log(line);
+  }
+
+  printMoveList() {
+    let moveNum = 1;
+    for (let i = 0; i < this.moveList.length; i++) {
+      for (let j = 0; j < this.moveList[i].length; j++) {
+        let move = this.moveList[i][j];
+        let fromSquareFile = this.filesBoard[getFromSquare(move)];
+        let toSquareFile = this.filesBoard[getToSquare(move)];
+        let fromSquareRank = this.ranksBoard[getFromSquare(move)];
+        let toSquareRank = this.ranksBoard[getToSquare(move)];
+
+        let moveStr =
+          CONSTANT.FILE_CHARACTER[fromSquareFile] +
+          (fromSquareRank + 1) +
+          CONSTANT.FILE_CHARACTER[toSquareFile] +
+          (toSquareRank + 1);
+
+        console.log('Move ' + moveNum + ': ' + moveStr);
+        moveNum++;
+      }
+    }
   }
 }
