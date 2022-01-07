@@ -24,5 +24,6 @@ export default class Pawn {
         return true;
       }
     }
+    return false;
   }
 }

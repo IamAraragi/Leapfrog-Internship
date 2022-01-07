@@ -29,19 +29,29 @@ function getPieceColor(piece) {
   }
 }
 
-function getRandom32() {
-  return (
-    (Math.floor(Math.random() * 255 + 1) << 23) |
-    (Math.floor(Math.random() * 255 + 1) << 16) |
-    (Math.floor(Math.random() * 255 + 1) << 8) |
-    Math.floor(Math.random() * 255 + 1)
-  );
+function getFromSquare(move) {
+  return move & 0x7f;
+}
+
+function getToSquare(move) {
+  return (move >> 7) & 0x7f;
+}
+
+function captured(move) {
+  return (move >> 14) & 0xf;
+}
+
+function promoted(move) {
+  return (move >> 20) & 0xf;
 }
 
 export {
   getSquareFromFileAndRank,
-  getRandom32,
   square64To120,
   square120To64,
   getPieceColor,
+  getFromSquare,
+  getToSquare,
+  captured,
+  promoted,
 };
