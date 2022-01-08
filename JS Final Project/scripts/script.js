@@ -1,6 +1,5 @@
 import Board from './board.js';
 import MoveGen from './move.js';
-import Rook from './pieces/rook.js';
 
 function init() {
   let board = new Board();
@@ -9,6 +8,18 @@ function init() {
   moveGen.generatePseudoLegalMoves();
   console.log(moveGen.moves);
   board.printMoveList();
+
+  moveGen.makeMove(board.moveList[0][18]);
+  board.renderBoard();
+
+  moveGen.generatePseudoLegalMoves();
+  // console.log(moveGen.moves);
+  // board.printMoveList();
+  moveGen.makeMove(board.moveList[1][1]);
+  board.renderBoard();
+
+  moveGen.undoMove();
+  board.renderBoard();
 }
 
 init();

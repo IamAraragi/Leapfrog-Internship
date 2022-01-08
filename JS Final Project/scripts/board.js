@@ -25,15 +25,20 @@ export default class Board {
     this.filesBoard = [];
     this.ranksBoard = [];
     this.maximunSinglePiece = 14;
-    this.material = [];
+    this.totalMaterialForSide = [];
     this.moveList = [];
     this.ply = 0;
+    this.gamePly = 0;
+    // this.gameInfo = {};
+    // this.gameHistory = [];
+    this.fiftyMoves = 0;
   }
 
   initialize() {
     this.initializeFilesAndRanksBoard();
-    // this.parseFEN('r6r/1b2k1bq/8/8/7B/8/8/R3K2R b KQ - 3 2');
-    this.parseFEN('8/1k6/8/8/8/8/8/K7 b - - 3 2');
+    // this.parseFEN('r6r/1b2k1bq/8/8/7B/8/8/R3K2R w KQ - 3 2');
+    // this.parseFEN('8/8/8/1Pp5/8/8/8/8 w - c6 3 2');
+    this.parseFEN('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
     this.renderBoard();
     this.getPieceList();
     this.renderAttackedBoard();
@@ -51,6 +56,10 @@ export default class Board {
     this.enPassant = CONSTANT.SQUARES.NO_SQ;
     this.ply = 0;
     this.castle = 0;
+    this.gamePly = 0;
+    this.fiftyMoves = 0;
+    // this.gameInfo = {};
+    // this.gameHistory = [];
   }
 
   initializeFilesAndRanksBoard() {
@@ -83,7 +92,7 @@ export default class Board {
       this.maximunSinglePiece * CONSTANT.TOTAL_SQUARES
     ).fill(0);
     this.pieceNum = Array(this.maximunSinglePiece).fill(0);
-    this.material = Array(2).fill(0);
+    this.totalMaterialForSide = Array(2).fill(0);
 
     for (let i = 0; i < 64; i++) {
       let square = square64To120(i);
@@ -92,7 +101,7 @@ export default class Board {
       if (piece !== CONSTANT.PIECES.empty) {
         let color = getPieceColor(piece);
 
-        this.material[color] += CONSTANT.PIECE_VALUE[piece];
+        this.totalMaterialForSide[color] += CONSTANT.PIECE_VALUE[piece];
         let pieceIndex = piece * 10 + this.pieceNum[piece];
         this.pieceList[pieceIndex] = square;
         this.pieceNum[piece]++;
@@ -244,7 +253,6 @@ export default class Board {
           this.castle |= CONSTANT.CASTLE.WHITE_KING_CASTLE;
           break;
         case 'Q':
-          console.log('b');
           this.castle |= CONSTANT.CASTLE.WHITE_QUEEN_CASTLE;
           break;
         case 'k':
@@ -260,7 +268,8 @@ export default class Board {
 
     if (fenString[3] !== '-') {
       file = fenString[3][0].charCodeAt() - 'a'.charCodeAt();
-      rank = parseInt(fenString[3][1]);
+      rank = parseInt(fenString[3][1]) - 1;
+      console.log(file, rank);
       this.enPassant = getSquareFromFileAndRank(file, rank);
     }
   }
