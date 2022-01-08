@@ -1,5 +1,11 @@
 import CONSTANT from './constants.js';
-import { getPieceColor } from './utils.js';
+import {
+  captured,
+  getFromSquare,
+  getPieceColor,
+  getToSquare,
+  promoted,
+} from './utils.js';
 
 export default class MoveGen {
   constructor(board) {
@@ -24,19 +30,22 @@ export default class MoveGen {
       CONSTANT.ROOK_ATTACKS,
       CONSTANT.KING_ATTACKS,
     ];
+
+    this.gameInfo = {};
+    this.gameHistory = [];
   }
 
-  movePiece(from, to, captured, promoted, flag) {
+  getMove(from, to, captured, promoted, flag) {
     return from | (to << 7) | (captured << 14) | (promoted << 20) | flag;
   }
 
   getWhitePawnPromotionMoves(square, newSquare, captured) {
     let move = 0;
     if (this.board.ranksBoard[square] === CONSTANT.RANKS.RANK_7) {
-      move = this.movePiece(square, newSquare, captured, PIECES.wQ, 0);
+      move = this.getMove(square, newSquare, captured, PIECES.wQ, 0);
       this.moves.push(move);
     } else {
-      move = this.movePiece(
+      move = this.getMove(
         square,
         newSquare,
         captured,
@@ -61,7 +70,7 @@ export default class MoveGen {
         this.board.ranksBoard[square] === CONSTANT.RANKS.RANK_2 &&
         this.board.pieces[newSquare] === CONSTANT.PIECES.empty
       ) {
-        move = this.movePiece(
+        move = this.getMove(
           square,
           newSquare,
           CONSTANT.PIECES.empty,
@@ -104,7 +113,7 @@ export default class MoveGen {
     //check for en passants
     let newSquare = square + CONSTANT.PAWN_ATTACKS[0];
     if (newSquare === this.board.enPassant) {
-      move = this.movePiece(
+      let move = this.getMove(
         square,
         newSquare,
         CONSTANT.PIECES.empty,
@@ -116,7 +125,7 @@ export default class MoveGen {
 
     newSquare = square + CONSTANT.PAWN_ATTACKS[1];
     if (newSquare === this.board.enPassant) {
-      move = this.movePiece(
+      let move = this.getMove(
         square,
         newSquare,
         CONSTANT.PIECES.empty,
@@ -138,7 +147,7 @@ export default class MoveGen {
             false &&
           this.board.isAttacked(CONSTANT.SQUARES.F1, CONSTANT.BLACK) === false
         ) {
-          let move = this.movePiece(
+          let move = this.getMove(
             CONSTANT.SQUARES.E1,
             CONSTANT.SQUARES.G1,
             CONSTANT.PIECES.empty,
@@ -161,7 +170,7 @@ export default class MoveGen {
             false &&
           this.board.isAttacked(CONSTANT.SQUARES.D1, CONSTANT.BLACK) === false
         ) {
-          let move = this.movePiece(
+          let move = this.getMove(
             CONSTANT.SQUARES.E1,
             CONSTANT.SQUARES.C1,
             CONSTANT.PIECES.empty,
@@ -190,10 +199,10 @@ export default class MoveGen {
   getBlackPawnPromotionMoves(square, newSquare, captured) {
     let move = 0;
     if (this.board.ranksBoard[square] === CONSTANT.RANKS.RANK_2) {
-      move = this.movePiece(square, newSquare, captured, PIECES.bQ, 0);
+      move = this.getMove(square, newSquare, captured, PIECES.bQ, 0);
       this.moves.push(move);
     } else {
-      move = this.movePiece(
+      move = this.getMove(
         square,
         newSquare,
         captured,
@@ -217,7 +226,7 @@ export default class MoveGen {
         this.board.ranksBoard[square] === CONSTANT.RANKS.RANK_7 &&
         this.board.pieces[newSquare] === CONSTANT.PIECES.empty
       ) {
-        let move = this.movePiece(
+        let move = this.getMove(
           square,
           newSquare,
           CONSTANT.PIECES.empty,
@@ -260,7 +269,7 @@ export default class MoveGen {
     //check for en passants
     let newSquare = square - CONSTANT.PAWN_ATTACKS[0];
     if (newSquare === this.board.enPassant) {
-      move = this.movePiece(
+      let move = this.getMove(
         square,
         newSquare,
         CONSTANT.PIECES.empty,
@@ -272,7 +281,7 @@ export default class MoveGen {
 
     newSquare = square - CONSTANT.PAWN_ATTACKS[1];
     if (newSquare === this.board.enPassant) {
-      move = this.movePiece(
+      let move = this.getMove(
         square,
         newSquare,
         CONSTANT.PIECES.empty,
@@ -294,7 +303,7 @@ export default class MoveGen {
             false &&
           this.board.isAttacked(CONSTANT.SQUARES.F8, CONSTANT.BLACK) === false
         ) {
-          let move = this.movePiece(
+          let move = this.getMove(
             CONSTANT.SQUARES.E8,
             CONSTANT.SQUARES.G8,
             CONSTANT.PIECES.empty,
@@ -317,7 +326,7 @@ export default class MoveGen {
             false &&
           this.board.isAttacked(CONSTANT.SQUARES.D8, CONSTANT.BLACK) === false
         ) {
-          let move = this.movePiece(
+          let move = this.getMove(
             CONSTANT.SQUARES.E8,
             CONSTANT.SQUARES.C8,
             CONSTANT.PIECES.empty,
@@ -369,7 +378,7 @@ export default class MoveGen {
             continue;
 
           if (this.board.pieces[newSquare] === CONSTANT.PIECES.empty) {
-            let move = this.movePiece(
+            let move = this.getMove(
               square,
               newSquare,
               CONSTANT.PIECES.empty,
@@ -381,7 +390,7 @@ export default class MoveGen {
             if (
               getPieceColor(this.board.pieces[newSquare]) != this.board.side
             ) {
-              let move = this.movePiece(
+              let move = this.getMove(
                 square,
                 newSquare,
                 this.board.pieces[newSquare],
@@ -425,7 +434,7 @@ export default class MoveGen {
               if (
                 getPieceColor(this.board.pieces[newSquare]) !== this.board.side
               ) {
-                let move = this.movePiece(
+                let move = this.getMove(
                   square,
                   newSquare,
                   this.board.pieces[newSquare],
@@ -435,9 +444,8 @@ export default class MoveGen {
                 this.moves.push(move);
               }
             }
-            console.log('a');
 
-            let move = this.movePiece(
+            let move = this.getMove(
               square,
               newSquare,
               CONSTANT.PIECES.empty,
@@ -454,6 +462,7 @@ export default class MoveGen {
   }
 
   generatePseudoLegalMoves() {
+    this.moves = [];
     if (this.board.side === CONSTANT.WHITE) {
       this.getWhitePawnMoves();
       this.getWhiteSideCastleMoves();
@@ -466,6 +475,228 @@ export default class MoveGen {
     this.getSlidingPieceMoves();
 
     this.board.moveList[this.board.ply] = this.moves;
+  }
+
+  movePiece(fromSquare, toSquare) {
+    let movedPiece = this.board.pieces[fromSquare];
+    this.board.pieces[fromSquare] = CONSTANT.PIECES.empty;
+    this.board.pieces[toSquare] = movedPiece;
+
+    for (
+      let pieceNum = 0;
+      pieceNum < this.board.pieceNum[movedPiece];
+      pieceNum++
+    ) {
+      let pieceIndex = movedPiece * 10 + pieceNum;
+
+      if (this.board.pieceList[pieceIndex] === fromSquare) {
+        this.board.pieceIndex = toSquare;
+      }
+    }
+  }
+
+  addPiece(piece, square) {
+    if (this.board.pieces[square] === CONSTANT.PIECES.empty) {
+      this.board.pieces[square] = piece;
+      this.board.totalMaterialForSide += CONSTANT.PIECE_VALUE[piece];
+
+      let pieceIndex = piece * 10 + this.board.pieceNum[piece];
+      this.board.pieceList[pieceIndex] = square;
+      this.board.pieceNum[piece]++;
+    }
+  }
+
+  clearPiece(square) {
+    let piece = this.board.pieces[square];
+    if (piece !== CONSTANT.PIECES.empty) {
+      this.board.pieces[square] = CONSTANT.PIECES.empty;
+      this.board.totalMaterialForSide -= CONSTANT.PIECE_VALUE[piece];
+
+      for (let pieceNum = 0; pieceNum < this.board.pieceNum[piece]; piece++) {
+        let pieceIndex = piece * 10 + pieceNum;
+        if (this.board.pieceList[pieceIndex] === square) {
+          let newPieceIndex = piece * 10 + this.board.pieceNum[piece];
+          this.board.pieceList[pieceIndex] =
+            this.board.pieceList[newPieceIndex];
+          this.board.pieceNum[piece]--;
+        }
+      }
+
+      this.board.fiftyMoves = 0;
+    }
+  }
+
+  makeEnPassantMove(move) {
+    let toSquare = getToSquare(move);
+    if (move & CONSTANT.FLAG_ENPASSANT) {
+      let enPassantPawnSquare = toSquare - 10;
+      if (this.board.side === CONSTANT.WHITE) {
+        this.clearPiece(enPassantPawnSquare);
+      } else {
+        enPassantPawnSquare = toSquare + 10;
+        this.clearPiece(enPassantPawnSquare);
+      }
+    }
+  }
+
+  makeCastleMove(move) {
+    let toSquare = getToSquare(move);
+    if (move & CONSTANT.FLAG_CASTLE) {
+      if (this.board.side === CONSTANT.WHITE) {
+        if (toSquare === CONSTANT.SQUARES.G1) {
+          this.movePiece(CONSTANT.SQUARES.H1, CONSTANT.SQUARES.F1);
+        } else {
+          this.movePiece(CONSTANT.SQUARES.A1, CONSTANT.SQUARES.D1);
+        }
+      } else {
+        if (toSquare === CONSTANT.SQUARES.G8) {
+          this.movePiece(CONSTANT.SQUARES.H8, CONSTANT.SQUARES.F8);
+        } else {
+          this.movePiece(CONSTANT.SQUARES.A8, CONSTANT.SQUARES.D8);
+        }
+      }
+    }
+  }
+
+  makeCaptureMove(move) {
+    let toSquare = getToSquare(move);
+    this.clearPiece(toSquare);
+  }
+
+  makePawnStartMove(move) {
+    let fromSquare = getFromSquare(move);
+
+    if (
+      this.board.pieces[fromSquare] === CONSTANT.PIECES.wP ||
+      this.board.pieces[fromSquare] === CONSTANT.PIECES.bP
+    ) {
+      this.board.fiftyMoves = 0;
+      if (move & CONSTANT.FLAG_PAWN_START) {
+        if (this.board.side === CONSTANT.WHITE) {
+          this.board.enPassant = fromSquare + 10;
+        } else {
+          this.board.enPassant = fromSquare - 10;
+        }
+      }
+    }
+  }
+
+  makePromotionMove(move) {
+    let toSquare = getToSquare(move);
+    let promotedPiece = promoted(move);
+
+    if (promotedPiece !== CONSTANT.PIECES.empty) {
+      this.clearPiece(toSquare);
+      this.addPiece(promotedPiece, toSquare);
+    }
+  }
+
+  makeMove(move) {
+    this.gameInfo = [];
+    let fromSquare = getFromSquare(move);
+    let toSquare = getToSquare(move);
+    // let capturedSquare = captured(move);
+    // let promotedSquare = promoted(move);
+
+    this.makeEnPassantMove(move);
+    this.makeCastleMove(move);
+
+    this.gameInfo.move = move;
+    this.gameInfo.castle = this.board.castle;
+    this.gameInfo.enPassant = this.board.enPassant;
+    this.gameInfo.fiftyMoves = this.board.fiftyMoves;
+
+    this.board.castle &= CONSTANT.CASTLE_PERM[fromSquare];
+    this.board.castle &= CONSTANT.CASTLE_PERM[toSquare];
+    this.board.enPassant = 0;
+    this.board.fiftyMoves++;
+
+    this.makeCaptureMove(move);
+    this.makePawnStartMove(move);
+
+    this.movePiece(fromSquare, toSquare);
+
+    this.makePromotionMove(move);
+
+    this.board.side = +!this.board.side;
+
+    this.gameHistory[this.board.gamePly] = this.gameInfo;
+    console.log(this.gameHistory);
+
+    this.board.gamePly++;
     this.board.ply++;
+  }
+
+  undoEnpassantMove(move) {
+    let toSquare = getToSquare(move);
+    if (move & CONSTANT.FLAG_ENPASSANT) {
+      if (this.board.side === CONSTANT.WHITE) {
+        this.addPiece(CONSTANT.PIECES.bP, toSquare - 10);
+      } else {
+        this.addPiece(CONSTANT.PIECES.wP, toSquare + 10);
+      }
+    }
+  }
+
+  undoCastleMove(move) {
+    let toSquare = getToSquare(move);
+    if (move & CONSTANT.FLAG_CASTLE) {
+      if (this.board.side === CONSTANT.WHITE) {
+        if (toSquare === CONSTANT.SQUARES.G1) {
+          this.movePiece(CONSTANT.SQUARES.F1, CONSTANT.SQUARES.H1);
+        } else {
+          this.movePiece(CONSTANT.SQUARES.D1, CONSTANT.SQUARES.A1);
+        }
+      } else {
+        if (toSquare === CONSTANT.SQUARES.G8) {
+          this.movePiece(CONSTANT.SQUARES.F8, CONSTANT.SQUARES.H8);
+        } else {
+          this.movePiece(CONSTANT.SQUARES.D8, CONSTANT.SQUARES.A8);
+        }
+      }
+    }
+  }
+
+  undoCaptureMove(move) {
+    let toSquare = getToSquare(move);
+    let capturedPiece = captured(move);
+    if (capturedPiece !== CONSTANT.PIECES.empty) {
+      this.addPiece(capturedPiece, toSquare);
+    }
+  }
+
+  undoPromotedMove(move) {
+    let fromSquare = getFromSquare(move);
+    let promotedPiece = promoted(move);
+
+    if (promotedPiece !== CONSTANT.PIECES.empty) {
+      this.clearPiece(fromSquare);
+      if (this.board.side === CONSTANT.WHITE) {
+        this.addPiece(CONSTANT.PIECES.wP, fromSquare);
+      } else {
+        this.addPiece(CONSTANT.PIECES.bP, fromSquare);
+      }
+    }
+  }
+
+  undoMove() {
+    this.board.gamePly--;
+    this.board.ply--;
+
+    let move = this.gameHistory[this.board.gamePly].move;
+    this.board.castle = this.gameHistory[this.board.gamePly].castle;
+    this.board.enPassant = this.gameHistory[this.board.gamePly].enPassant;
+    this.board.fiftyMoves = this.gameHistory[this.board.gamePly].fiftyMoves;
+
+    let fromSquare = getFromSquare(move);
+    let toSquare = getToSquare(move);
+
+    this.board.side = +!this.board.side;
+    this.undoEnpassantMove(move);
+    this.undoCastleMove(move);
+
+    this.movePiece(toSquare, fromSquare);
+    this.undoCaptureMove(move);
+    this.undoPromotedMove(move);
   }
 }
