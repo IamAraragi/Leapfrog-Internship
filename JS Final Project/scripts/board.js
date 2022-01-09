@@ -37,7 +37,7 @@ export default class Board {
   initialize() {
     this.initializeFilesAndRanksBoard();
     // this.parseFEN('r6r/1b2k1bq/8/8/7B/8/8/R3K2R w KQ - 3 2');
-    // this.parseFEN('8/8/8/1Pp5/8/8/8/8 w - c6 3 2');
+    // this.parseFEN('r3k2r/8/8/8/8/8/8/R3K2R b KQkq - 3 2');
     this.parseFEN('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
     this.renderBoard();
     this.getPieceList();
@@ -324,9 +324,9 @@ export default class Board {
     console.log(line);
   }
 
-  printMoveList() {
+  printMoveList(x) {
     let moveNum = 1;
-    for (let i = 0; i < this.moveList.length; i++) {
+    for (let i = x; i < this.moveList.length; i++) {
       for (let j = 0; j < this.moveList[i].length; j++) {
         let move = this.moveList[i][j];
         let fromSquareFile = this.filesBoard[getFromSquare(move)];

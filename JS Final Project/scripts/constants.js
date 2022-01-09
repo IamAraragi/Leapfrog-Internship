@@ -1,4 +1,6 @@
 const CONSTANT = {
+    CANVAS_WIDTH: 480,
+    CANVAS_HEIGHT: 480,
     PIECES: {
       empty: 0,
       wP: 1,
@@ -14,6 +16,8 @@ const CONSTANT = {
       bQ: 11,
       bK: 12,
     },
+
+    PIECE_NAMES : ['.', 'wP', 'wN', 'wB', 'wR', 'wQ', 'wK', 'bP', 'bN', 'bB', 'bR', 'bQ', 'bK'],
     
     TOTAL_SQUARES: 120,
     
@@ -29,7 +33,7 @@ const CONSTANT = {
                     A8: 91, B8: 92, C8: 93, D8: 94, E8: 95, F8: 96, G8: 97, H8: 98,
                     NO_SQ: 99, OFFBOARD: 100},
     
-    CASTLE: {WHITE_KING_CASTLE: 1, BLACK_KING_CASTLE: 2, WHITE_QUEEN_CASTLE: 4, BLACK_QUEEN_CASTLE: 8},
+    CASTLE: {WHITE_KING_CASTLE: 1, BLACK_KING_CASTLE: 4, WHITE_QUEEN_CASTLE: 2, BLACK_QUEEN_CASTLE: 8},
     
     PIECE_CHARACTER: '.PNBRQKpnbrqk',
     FILE_CHARACTER: 'abcdefgh',

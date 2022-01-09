@@ -5,6 +5,14 @@ function getSquareFromFileAndRank(file, rank) {
   return squareIndex;
 }
 
+function getFileFromSquare(square) {
+  return (square % 10) - 1;
+}
+
+function getRankFromSquare(square) {
+  return Math.floor(square / 10) - 2;
+}
+
 function square64To120(sq64) {
   let rank = Math.floor(sq64 / 8);
   let file = sq64 % 8;
@@ -54,4 +62,6 @@ export {
   getToSquare,
   captured,
   promoted,
+  getFileFromSquare,
+  getRankFromSquare,
 };

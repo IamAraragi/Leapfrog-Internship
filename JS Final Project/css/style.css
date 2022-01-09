@@ -3,3 +3,13 @@
   margin: 0;
   padding: 0;
 }
+
+#wrapper {
+  width: 480px;
+  height: 480px;
+  position: relative;
+}
+
+#chessBoard {
+  border: 1px solid red;
+}
