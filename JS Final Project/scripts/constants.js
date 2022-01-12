@@ -1,6 +1,6 @@
 const CONSTANT = {
-    CANVAS_WIDTH: 480,
-    CANVAS_HEIGHT: 480,
+    CANVAS_WIDTH: 560,
+    CANVAS_HEIGHT: 560,
     PIECES: {
       empty: 0,
       wP: 1,
@@ -60,7 +60,68 @@ const CONSTANT = {
                     15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
                     15, 7, 15, 15, 15, 3, 15, 15, 11, 15,
                     15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
-                    15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+                    15, 15, 15, 15, 15, 15, 15, 15, 15, 15],
+    
+    PAWN_ATTACK_SCORES: [
+      0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,
+      10	,	10	,	0	,	-10	,	-10	,	0	,	10	,	10	,
+      5	,	0	,	0	,	5	,	5	,	0	,	0	,	5	,
+      0	,	0	,	10	,	20	,	20	,	10	,	0	,	0	,
+      5	,	5	,	5	,	10	,	10	,	5	,	5	,	5	,
+      10	,	10	,	10	,	20	,	20	,	10	,	10	,	10	,
+      20	,	20	,	20	,	30	,	30	,	20	,	20	,	20	,
+      0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	
+      ],
+
+    KNIGHT_ATTACK_SCORES : [
+      0	,	-10	,	0	,	0	,	0	,	0	,	-10	,	0	,
+      0	,	0	,	0	,	5	,	5	,	0	,	0	,	0	,
+      0	,	0	,	10	,	10	,	10	,	10	,	0	,	0	,
+      0	,	0	,	10	,	20	,	20	,	10	,	5	,	0	,
+      5	,	10	,	15	,	20	,	20	,	15	,	10	,	5	,
+      5	,	10	,	10	,	20	,	20	,	10	,	10	,	5	,
+      0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
+      0	,	0	,	0	,	0	,	0	,	0	,	0	,	0		
+      ],
+
+    BISHOP_ATTACK_SCORES: [
+      0	,	0	,	-10	,	0	,	0	,	-10	,	0	,	0	,
+      0	,	0	,	0	,	10	,	10	,	0	,	0	,	0	,
+      0	,	0	,	10	,	15	,	15	,	10	,	0	,	0	,
+      0	,	10	,	15	,	20	,	20	,	15	,	10	,	0	,
+      0	,	10	,	15	,	20	,	20	,	15	,	10	,	0	,
+      0	,	0	,	10	,	15	,	15	,	10	,	0	,	0	,
+      0	,	0	,	0	,	10	,	10	,	0	,	0	,	0	,
+      0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	
+      ],
+
+    ROOK_ATTACK_SCORES: [
+      0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
+      0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
+      0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
+      0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
+      0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
+      0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
+      25	,	25	,	25	,	25	,	25	,	25	,	25	,	25	,
+      0	,	0	,	5	,	10	,	10	,	5	,	0	,	0		
+      ],
+
+    CHECKMATE: 50000,
+
+    DEPTH: 3
+  }
+
+  export const SCORE_BY_POSITION =  {
+    1: CONSTANT.PAWN_ATTACK_SCORES,
+    2: CONSTANT.KNIGHT_ATTACK_SCORES,
+    3: CONSTANT.BISHOP_ATTACK_SCORES,
+    4: CONSTANT.ROOK_ATTACK_SCORES,
+    5: CONSTANT.ROOK_ATTACK_SCORES,
+    7: CONSTANT.PAWN_ATTACK_SCORES.reverse(),
+    8: CONSTANT.KNIGHT_ATTACK_SCORES.reverse(),
+    9: CONSTANT.BISHOP_ATTACK_SCORES.reverse(),
+    10: CONSTANT.ROOK_ATTACK_SCORES.reverse(),
+    11: CONSTANT.ROOK_ATTACK_SCORES.reverse(),
   }
   
   export default CONSTANT

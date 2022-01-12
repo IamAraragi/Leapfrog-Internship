@@ -13,6 +13,32 @@ function getRankFromSquare(square) {
   return Math.floor(square / 10) - 2;
 }
 
+function getMoveString(move) {
+  let fromSquare = getFromSquare(move);
+  let toSquare = getToSquare(move);
+
+  let fromSquareFile = getFileFromSquare(fromSquare);
+  let toSquareFile = getFileFromSquare(toSquare);
+  let fromSquareRank = getRankFromSquare(fromSquare);
+  let toSquareRank = getRankFromSquare(toSquare);
+
+  return (
+    CONSTANT.FILE_CHARACTER[fromSquareFile] +
+    (fromSquareRank + 1) +
+    CONSTANT.FILE_CHARACTER[toSquareFile] +
+    (toSquareRank + 1)
+  );
+}
+
+function getMoveStringList(moveList) {
+  let moveStringList = [];
+  for (let i = 0; i < moveList.length; i++) {
+    moveStringList.push(getMoveString(moveList[i]));
+  }
+
+  return moveStringList;
+}
+
 function square64To120(sq64) {
   let rank = Math.floor(sq64 / 8);
   let file = sq64 % 8;
@@ -64,4 +90,6 @@ export {
   promoted,
   getFileFromSquare,
   getRankFromSquare,
+  getMoveString,
+  getMoveStringList,
 };

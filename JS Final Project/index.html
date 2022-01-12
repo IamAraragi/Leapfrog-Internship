@@ -8,7 +8,52 @@
     <title>Chess</title>
   </head>
   <body>
-    <canvas id="chessBoard"></canvas>
+    <div class="game-wrapper clearfix">
+      <div class="canvas">
+        <canvas id="chessBoard"></canvas>
+        <div class="dragged-piece" id="draggedPiece"></div>
+      </div>
+      <div class="start-menu" id="startMenu">
+        <div class="start-menu-heading">
+          <h1>PLAY CHESS</h1>
+          <img src="./images/chess-logo.png" alt="chess-logo" />
+        </div>
+        <div class="start-menu-content">
+          <div class="play-human-button">
+            <button class="human-button" id="playHumanButton">
+              <img src="./images/human.png" alt="human" />
+              <h2>Play Human</h2>
+            </button>
+          </div>
+          <div class="play-computer-button">
+            <button class="computer-button" id="playComputerButton">
+              <img src="./images/computer.png" alt="human" />
+              <h2>Play Computer</h2>
+            </button>
+          </div>
+          <div class="choose-side">
+            <h2>Choose Side</h2>
+            <div class="choose-side-buttons">
+              <button class="white-side" id="whiteSide">&#9812;</button>
+              <button class="black-side" id="blackSide">&#9818;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-menu" id="sideMenu">
+        <div class="move-heading">
+          <h1 id="showTurns"></h1>
+        </div>
+        <div class="move-list" id="moveList"></div>
+        <div class="game-menu">
+          <button id="newGameButton">New Game</button>
+          <button id="undoButton">Undo</button>
+          <button id="flipButton">Flip</button>
+          <button id="resignButton">Resign</button>
+        </div>
+      </div>
+    </div>
     <script src="./scripts/script.js" type="module"></script>
   </body>
 </html>
