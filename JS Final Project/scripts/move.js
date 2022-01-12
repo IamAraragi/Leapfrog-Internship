@@ -309,7 +309,6 @@ export default class MoveGen {
             false &&
           this.board.isAttacked(CONSTANT.SQUARES.F8, CONSTANT.WHITE) === false
         ) {
-          console.log('a');
           let move = this.getMove(
             CONSTANT.SQUARES.E8,
             CONSTANT.SQUARES.G8,
@@ -484,8 +483,6 @@ export default class MoveGen {
 
     this.getNonSlidingPieceMoves();
     this.getSlidingPieceMoves();
-
-    this.board.moveList[this.board.ply] = this.moves;
   }
 
   movePiece(fromSquare, toSquare) {
@@ -660,6 +657,7 @@ export default class MoveGen {
       }
       this.undoMove();
     }
+    this.board.moveList[this.board.ply] = this.moves;
   }
 
   checkCheckMate() {
@@ -746,6 +744,8 @@ export default class MoveGen {
     this.board.castle = this.gameHistory[this.board.gamePly].castle;
     this.board.enPassant = this.gameHistory[this.board.gamePly].enPassant;
     this.board.fiftyMoves = this.gameHistory[this.board.gamePly].fiftyMoves;
+
+    this.gameHistory.splice(-1);
 
     let fromSquare = getFromSquare(move);
     let toSquare = getToSquare(move);

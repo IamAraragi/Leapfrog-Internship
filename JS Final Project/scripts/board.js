@@ -29,15 +29,15 @@ export default class Board {
     this.moveList = [];
     this.ply = 0;
     this.gamePly = 0;
-    // this.gameInfo = {};
-    // this.gameHistory = [];
     this.fiftyMoves = 0;
   }
 
   initialize() {
     this.initializeFilesAndRanksBoard();
-    // this.parseFEN('r6r/1b2k1bq/8/8/7B/8/8/R3K2R w KQ - 3 2');
-    // this.parseFEN('r3k2r/8/8/8/8/8/8/R3K2R b KQkq - 3 2');
+    // this.parseFEN(
+    //   'r2q1rk1/ppp2ppp/2n1bn2/2b1p3/3pP3/3P1NPP/PPP1NPB1/R1BQ1RK1 b - - 0 9'
+    // );
+    // this.parseFEN('8/8/7N/8/8/7n/8/8 w - - 3 2');
     this.parseFEN('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
     this.renderBoard();
     this.getPieceList();
@@ -58,8 +58,6 @@ export default class Board {
     this.castle = 0;
     this.gamePly = 0;
     this.fiftyMoves = 0;
-    // this.gameInfo = {};
-    // this.gameHistory = [];
   }
 
   initializeFilesAndRanksBoard() {
