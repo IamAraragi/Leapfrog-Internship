@@ -28,11 +28,54 @@ body {
   border-radius: 7px;
 }
 
-.dragged-piece {
+.player {
+  width: 560px;
+  padding: 10px 0 10px 0;
+}
+
+.player img {
+  width: 50px;
+  float: left;
+}
+
+.player-info {
+  float: left;
+  margin-left: 10px;
+  color: #a7a6a2;
+}
+
+.captured-pieces {
+  font-size: 24px;
+}
+
+.player1-timer,
+.player2-timer {
+  float: right;
+  font-size: 30px;
+  color: #ffffff;
+  padding: 10px 20px 0 0;
+}
+
+/* .player2-timer {
+  float: le;
+} */
+
+.game-over {
+  display: none;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 70px;
+  width: 320px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #666564;
+  text-align: center;
+  border-radius: 7px;
+  padding: 20px 0;
+}
+
+.game-over-heading h1 {
+  font-size: 50px;
+  color: #ffffff;
 }
 
 .start-menu {
@@ -62,7 +105,7 @@ body {
 
 .start-menu-content {
   background-color: #272522;
-  padding: 20px 0 200px 0;
+  padding: 20px 0 100px 0;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
 }
@@ -105,6 +148,10 @@ body {
   background-color: #131111;
 }
 
+.choose-side {
+  padding-top: 20px;
+}
+
 .choose-side h2 {
   width: 35%;
   color: #ffffff;
@@ -133,10 +180,33 @@ body {
   background-color: #26211b;
 }
 
+.choose-timer {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.choose-timer h2 {
+  width: 35%;
+  color: #ffffff;
+  padding-bottom: 20px;
+  margin: 0 auto;
+}
+
+.choose-timer button {
+  padding: 10px;
+  border: none;
+  background-color: #1f1e1b;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
 .side-menu {
   display: none;
   float: left;
-  margin-left: 30px;
+  margin: 20px 0 0 30px;
   width: 40%;
 }
 
@@ -149,7 +219,7 @@ body {
 }
 
 .move-list {
-  height: 400px;
+  height: 500px;
   background-color: #272522;
   padding: 20px 0 20px 0;
   overflow-x: scroll;
