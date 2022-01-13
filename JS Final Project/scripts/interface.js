@@ -7,6 +7,8 @@ import {
   getToSquare,
   getRankFromSquare,
   getMoveString,
+  captured,
+  decreaseTimer,
 } from './utils.js';
 
 export default class BoardInterface {
@@ -21,18 +23,29 @@ export default class BoardInterface {
     this.toSquare = -1;
     this.flip = 0;
     this.movesMade = [];
-    this.gameState = 0;
+    this.gameOver = 0;
+    this.gameStart = 0;
     this.playVsHuman = 0;
     this.playVsComputer = 0;
+    this.blackCapturedPieces = [];
+    this.whiteCapturedPieces = [];
+    this.winner = '';
+    this.noTimer = true;
+    this.playerSelectedTimer = { minutes: 10, seconds: 0 };
+    this.opponentSelectedTimer = { minutes: 10, seconds: 0 };
+    this.playerTimer = { minutes: 10, seconds: 0 };
+    this.opponentTimer = { minutes: 10, seconds: 0 };
 
     this.playerSide = CONSTANT.WHITE;
     this.opponentSide = CONSTANT.BLACK;
+    this.frames = 0;
     this.intialize();
     this.render();
   }
 
   flipBoard() {
     this.flip = +!this.flip;
+    this.changeSide();
   }
 
   displayTurn() {
@@ -43,20 +56,174 @@ export default class BoardInterface {
     }
   }
 
-  // chooseSide() {}
+  displayGameOver() {
+    this.gameOverDiv.style.display = 'block';
+
+    if (this.winner === 'white') {
+      this.winnerDiv.innerHTML = 'WHITE WINS';
+    } else if (this.winner === 'black') {
+      this.winnerDiv.innerHTML = 'BLACK WINS';
+    } else {
+      this.winnerDiv.innerHTML = 'DRAW';
+    }
+
+    this.winnerDiv.style.fontSize = '30px';
+    this.winnerDiv.style.color = '#ffffff';
+    this.winnerDiv.style.padding = '30px 0';
+  }
+
+  changeSide() {
+    let player1Info = this.player1.innerHTML;
+    let player2Info = this.player2.innerHTML;
+
+    this.player1.innerHTML = player2Info;
+    this.player2.innerHTML = player1Info;
+  }
+
+  addBlackAndWhiteCapturedPieces(move) {
+    if (captured(move) !== CONSTANT.PIECES.empty) {
+      if (this.board.side === CONSTANT.WHITE) {
+        console.log('a');
+        this.whiteCapturedPieces.push(captured(move));
+      } else {
+        this.blackCapturedPieces.push(captured(move));
+      }
+    }
+  }
+
+  popBlackAndWhiteCapturedPieces(move) {
+    if (captured(move) !== CONSTANT.PIECES.empty) {
+      if (this.board.side === CONSTANT.WHITE) {
+        this.blackCapturedPieces.pop();
+      } else {
+        this.whiteCapturedPieces.pop();
+      }
+    }
+  }
+
+  getBlackAndWhitePiecesUnicode() {
+    this.whiteCapturedPiecesUnicode = [];
+    this.blackCapturedPiecesUnicode = [];
+
+    for (let i = 0; i < this.whiteCapturedPieces.length; i++) {
+      let piece = this.whiteCapturedPieces[i];
+      switch (piece) {
+        case 1:
+          this.whiteCapturedPiecesUnicode.push('&#9817;');
+          break;
+        case 2:
+          this.whiteCapturedPiecesUnicode.push('&#9816;');
+          break;
+        case 3:
+          this.whiteCapturedPiecesUnicode.push('&#9815;');
+          break;
+        case 4:
+          this.whiteCapturedPiecesUnicode.push('&#9814;');
+          break;
+        case 5:
+          this.whiteCapturedPiecesUnicode.push('&#9813;');
+          break;
+      }
+    }
+
+    for (let i = 0; i < this.blackCapturedPieces.length; i++) {
+      let piece = this.blackCapturedPieces[i];
+      switch (piece) {
+        case 7:
+          this.blackCapturedPiecesUnicode.push('&#9823;');
+          break;
+        case 8:
+          this.blackCapturedPiecesUnicode.push('&#9822;');
+          break;
+        case 9:
+          this.blackCapturedPiecesUnicode.push('&#9821;');
+          break;
+        case 10:
+          this.blackCapturedPiecesUnicode.push('&#9820;');
+          break;
+        case 11:
+          this.blackCapturedPiecesUnicode.push('&#9819;');
+          break;
+      }
+    }
+  }
+
+  displayWhiteCapturedPieces() {
+    this.player1CapturedPiecesString = '';
+    this.player2CapturedPiecesString = '';
+
+    this.getBlackAndWhitePiecesUnicode();
+
+    if (this.whiteCapturedPiecesUnicode.length !== 0) {
+      if (this.playerSide === CONSTANT.WHITE) {
+        console.log('b');
+        for (let i = 0; i < this.whiteCapturedPiecesUnicode.length; i++) {
+          this.player2CapturedPiecesString +=
+            this.whiteCapturedPiecesUnicode[i];
+        }
+      } else {
+        for (let i = 0; i < this.whiteCapturedPiecesUnicode.length; i++) {
+          this.player1CapturedPiecesString +=
+            this.whiteCapturedPiecesUnicode[i];
+        }
+      }
+    }
+
+    this.player1CapturedPieces.innerHTML = this.player1CapturedPiecesString;
+    this.player2CapturedPieces.innerHTML = this.player2CapturedPiecesString;
+  }
+
+  displayBlackCapturedPieces() {
+    this.getBlackAndWhitePiecesUnicode();
+
+    if (this.blackCapturedPiecesUnicode.length !== 0) {
+      if (this.playerSide === CONSTANT.WHITE) {
+        for (let i = 0; i < this.blackCapturedPiecesUnicode.length; i++) {
+          this.player1CapturedPiecesString +=
+            this.blackCapturedPiecesUnicode[i];
+        }
+      } else {
+        for (let i = 0; i < this.blackCapturedPiecesUnicode.length; i++) {
+          this.player2CapturedPiecesString +=
+            this.blackCapturedPiecesUnicode[i];
+        }
+      }
+    }
+
+    this.player1CapturedPieces.innerHTML = this.player1CapturedPiecesString;
+    this.player2CapturedPieces.innerHTML = this.player2CapturedPiecesString;
+  }
 
   intialize() {
     this.canvas = document.getElementById('chessBoard');
     this.ctx = this.canvas.getContext('2d');
+    this.player1 = document.getElementById('player1');
+    this.player2 = document.getElementById('player2');
+    this.player1CapturedPieces = document.getElementById(
+      'player1CapturedPieces'
+    );
+    this.player2CapturedPieces = document.getElementById(
+      'player2CapturedPieces'
+    );
+    this.player1TimerDiv = document.getElementById('player1TimerDiv');
+    this.player2TimerDiv = document.getElementById('player2TimerDiv');
+    this.gameOverDiv = document.getElementById('gameOverDiv');
+    this.gameOverType = document.getElementById('gameOverType');
+    this.winnerDiv = document.getElementById('winnerDiv');
     this.startMenu = document.getElementById('startMenu');
     this.sideMenu = document.getElementById('sideMenu');
     this.playHumanButton = document.getElementById('playHumanButton');
     this.playComputerButton = document.getElementById('playComputerButton');
     this.whiteSideButton = document.getElementById('whiteSide');
     this.blackSideButton = document.getElementById('blackSide');
+    this.oneMinuteButton = document.getElementById('oneMinuteButton');
+    this.fiveMinuteButton = document.getElementById('fiveMinuteButton');
+    this.tenMinuteButton = document.getElementById('tenMinuteButton');
+    this.noTimerButton = document.getElementById('noTimerButton');
     this.newGameButton = document.getElementById('newGameButton');
     this.undoButton = document.getElementById('undoButton');
     this.flipButton = document.getElementById('flipButton');
+    this.resignButton = document.getElementById('resignButton');
     this.movesShown = document.getElementById('moveList');
     this.showTurns = document.getElementById('showTurns');
 
@@ -67,28 +234,54 @@ export default class BoardInterface {
 
   initializeEventListeners() {
     this.canvas.addEventListener('click', (event) => {
-      if (this.playVsHuman === 1) {
-        this.humanPlay();
-      }
+      if (this.gameOver === 0) {
+        if (this.playVsHuman === 1) {
+          this.humanPlay(event);
+        }
 
-      if (this.playVsComputer === 1) {
-        if (this.board.side === this.playerSide) {
-          this.humanPlay();
+        if (this.playVsComputer === 1) {
+          if (this.board.side === this.playerSide) {
+            this.humanPlay(event);
+          }
         }
       }
     });
 
     this.undoButton.addEventListener('click', () => {
-      this.moveGen.undoMove();
+      let move = this.moveGen.undoMove();
+      this.popBlackAndWhiteCapturedPieces(move);
+      this.displayWhiteCapturedPieces();
+      this.displayBlackCapturedPieces();
+      this.movesMade.pop();
+      this.movesShown.removeChild(this.movesShown.lastChild);
+      this.addMoveToMoveList();
     });
 
     this.newGameButton.addEventListener('click', () => {
       this.board.initialize();
       this.flip = 0;
+      this.gameOver = 0;
+      this.gameStart = 1;
+      this.gameOverDiv.style.display = 'none';
+      this.movesShown.innerHTML = '';
+      this.movesMade = [];
+      this.playerTimer = this.playerSelectedTimer;
+      this.opponentTimer = this.opponentSelectedTimer;
     });
 
     this.flipButton.addEventListener('click', () => {
       this.flipBoard();
+    });
+
+    this.resignButton.addEventListener('click', () => {
+      this.gameOverType.innerHTML = 'by Resignation';
+      this.gameOver = 1;
+
+      if (this.board.side === CONSTANT.WHITE) {
+        this.winner = 'black';
+      } else {
+        this.winner = 'white';
+      }
     });
 
     this.whiteSideButton.addEventListener('click', () => {
@@ -108,6 +301,7 @@ export default class BoardInterface {
     });
 
     this.playHumanButton.addEventListener('click', () => {
+      this.gameStart = 1;
       this.playVsHuman = 1;
       this.playVsComputer = 0;
       this.startMenu.style.display = 'none';
@@ -115,14 +309,47 @@ export default class BoardInterface {
     });
 
     this.playComputerButton.addEventListener('click', () => {
+      this.gameStart = 1;
       this.playVsHuman = 0;
       this.playVsComputer = 1;
       this.startMenu.style.display = 'none';
       this.sideMenu.style.display = 'block';
     });
+
+    this.oneMinuteButton.addEventListener('click', () => {
+      this.oneMinuteButton.style.border = '2px solid green';
+      this.noTimer = false;
+      this.playerSelectedTimer = { minutes: 1, seconds: 0 };
+      this.opponentSelectedTimer = { minutes: 1, seconds: 0 };
+      this.playerTimer = { minutes: 1, seconds: 0 };
+      this.opponentTimer = { minutes: 1, seconds: 0 };
+    });
+
+    this.fiveMinuteButton.addEventListener('click', () => {
+      this.fiveMinuteButton.style.border = '2px solid green';
+      this.noTimer = false;
+      this.playerSelectedTimer = { minutes: 5, seconds: 0 };
+      this.opponentSelectedTimer = { minutes: 5, seconds: 0 };
+      this.playerTimer = { minutes: 5, seconds: 0 };
+      this.opponentTimer = { minutes: 5, seconds: 0 };
+    });
+
+    this.tenMinuteButton.addEventListener('click', () => {
+      this.tenMinuteButton.style.border = '2px solid green';
+      this.noTimer = false;
+      this.playerSelectedTimer = { minutes: 10, seconds: 0 };
+      this.opponentSelectedTimer = { minutes: 10, seconds: 0 };
+      this.playerTimer = { minutes: 10, seconds: 0 };
+      this.opponentTimer = { minutes: 10, seconds: 0 };
+    });
+
+    this.noTimerButton.addEventListener('click', () => {
+      this.noTimerButton.style.border = '2px solid green';
+      this.noTimer = true;
+    });
   }
 
-  humanPlay() {
+  humanPlay(event) {
     this.legalMoves = [];
     let file = 0;
     let rank = 0;
@@ -152,7 +379,9 @@ export default class BoardInterface {
 
       if (to === this.toSquare) {
         this.moveGen.makeMove(this.legalMoves[i]);
-        this.board.renderBoard();
+        this.addBlackAndWhiteCapturedPieces(this.legalMoves[i]);
+        this.displayWhiteCapturedPieces();
+        this.displayBlackCapturedPieces();
         this.movesMade.push(this.legalMoves[i]);
         this.addMoveToMoveList();
         this.fromSquare = -1;
@@ -160,17 +389,49 @@ export default class BoardInterface {
       }
     }
 
-    if (this.moveGen.checkCheckMate() === true) {
-      console.log('CHECKMATE');
-    }
+    this.checkForCheckMate();
+    this.checkThreeFoldRepetition();
+    this.checkStaleMate();
   }
 
   computerPlay() {
     this.engine.findBestMove();
     this.moveGen.makeMove(this.engine.bestMove);
+    this.addBlackAndWhiteCapturedPieces(this.engine.bestMove);
+    this.displayWhiteCapturedPieces();
+    this.displayBlackCapturedPieces();
+    this.movesMade.push(this.engine.bestMove);
+    this.addMoveToMoveList();
 
+    this.checkForCheckMate();
+    this.checkThreeFoldRepetition();
+    this.checkStaleMate();
+  }
+
+  checkForCheckMate() {
     if (this.moveGen.checkCheckMate() === true) {
-      console.log('CHECKMATE');
+      this.gameOverType.innerHTML = 'by CheckMate';
+      this.gameOver = 1;
+
+      if (this.board.side === CONSTANT.WHITE) {
+        this.winner = 'black';
+      } else {
+        this.winner = 'white';
+      }
+    }
+  }
+
+  checkStaleMate() {
+    if (this.moveGen.isStaleMate() === true) {
+      this.gameOver = 1;
+      this.gameOverType.innerHTML = 'by StaleMate';
+    }
+  }
+
+  checkThreeFoldRepetition() {
+    if (this.moveGen.isThreeFoldRepetition() >= 3) {
+      this.gameOver = 1;
+      this.gameOverType.innerHTML = 'by Repitition';
     }
   }
 
@@ -195,7 +456,6 @@ export default class BoardInterface {
         getMoveString(this.movesMade[this.movesMade.length - 1]) +
         '</pre>';
     }
-    console.log(moveString);
 
     if (this.board.side === CONSTANT.BLACK) {
       movesDiv = document.createElement('div');
@@ -361,11 +621,62 @@ export default class BoardInterface {
     }
   }
 
+  startTimer() {
+    this.player1TimerDiv.innerHTML =
+      this.playerTimer.minutes + ':' + this.playerTimer.seconds;
+    this.player2TimerDiv.innerHTML =
+      this.opponentTimer.minutes + ':' + this.opponentTimer.seconds;
+    if (this.board.side === this.playerSide) {
+      this.playerTimer = decreaseTimer(this.playerTimer);
+    } else {
+      this.opponentTimer = decreaseTimer(this.opponentTimer);
+    }
+  }
+
+  checkTimer() {
+    if (this.playerTimer.minutes === 0 && this.playerTimer.seconds === 0) {
+      this.gameOver = 1;
+      this.gameStart = 0;
+
+      this.gameOverType.innerHTML = 'by Time';
+
+      if (this.playerSide === CONSTANT.WHITE) {
+        this.winner = 'black';
+      } else {
+        this.winner = 'white';
+      }
+    }
+
+    if (this.opponentTimer.minutes === 0 && this.opponentTimer.seconds === 0) {
+      console.log('b');
+      this.gameOver = 1;
+      this.gameStart = 0;
+
+      this.gameOverType.innerHTML = 'by Time';
+
+      if (this.opponentSide === CONSTANT.WHITE) {
+        this.winner = 'black';
+      } else {
+        this.winner = 'white';
+      }
+    }
+  }
+
   render() {
+    this.frames++;
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.globalAlpha = 1;
     this.drawBoard();
     this.drawPieces();
+
+    if (this.frames >= 60) {
+      this.frames = 0;
+      if (this.gameStart === 1 && this.gameOver === 0) {
+        if (this.noTimer === false) {
+          this.startTimer();
+        }
+      }
+    }
 
     this.displayTurn();
 
@@ -377,6 +688,14 @@ export default class BoardInterface {
       if (this.board.side === this.opponentSide) {
         this.computerPlay();
       }
+    }
+
+    if (this.noTimer === false) {
+      this.checkTimer();
+    }
+
+    if (this.gameOver === 1) {
+      this.displayGameOver();
     }
 
     requestAnimationFrame(this.render.bind(this));

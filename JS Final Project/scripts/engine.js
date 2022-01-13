@@ -62,25 +62,31 @@ export default class Engine {
   }
 
   findBestMove() {
-    for (let i = 1; i <= 3; i++) {
-      let bestScore = this.findAlphaBetaMove(
-        i,
-        -CONSTANT.CHECKMATE,
-        CONSTANT.CHECKMATE
-      );
+    // for (let i = 1; i <= 4; i++) {
+    //   let bestScore = this.findAlphaBetaMove(
+    //     i,
+    //     -CONSTANT.CHECKMATE,
+    //     CONSTANT.CHECKMATE
+    //   );
 
-      let line =
-        'D:' +
-        i +
-        ' Best:' +
-        getMoveString(this.bestMove) +
-        ' Score:' +
-        bestScore +
-        ' nodes:' +
-        this.nodes;
+    //   let line =
+    //     'D:' +
+    //     i +
+    //     ' Best:' +
+    //     getMoveString(this.bestMove) +
+    //     ' Score:' +
+    //     bestScore +
+    //     ' nodes:' +
+    //     this.nodes;
 
-      console.log(line);
-    }
+    //   console.log(line);
+    // }
+
+    this.findAlphaBetaMove(
+      CONSTANT.DEPTH,
+      -CONSTANT.CHECKMATE,
+      CONSTANT.CHECKMATE
+    );
   }
 
   findAlphaBetaMove(depth, alpha, beta) {

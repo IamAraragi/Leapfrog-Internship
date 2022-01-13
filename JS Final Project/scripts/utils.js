@@ -79,6 +79,25 @@ function promoted(move) {
   return (move >> 20) & 0xf;
 }
 
+function decreaseTimer(timer) {
+  timer.seconds--;
+  if (timer.seconds < 0) {
+    timer.minutes--;
+    timer.seconds = 59;
+  }
+
+  return timer;
+}
+
+function hashRand() {
+  return (
+    (Math.floor(Math.random() * 255 + 1) << 23) |
+    (Math.floor(Math.random() * 255 + 1) << 16) |
+    (Math.floor(Math.random() * 255 + 1) << 8) |
+    Math.floor(Math.random() * 255 + 1)
+  );
+}
+
 export {
   getSquareFromFileAndRank,
   square64To120,
@@ -92,4 +111,6 @@ export {
   getRankFromSquare,
   getMoveString,
   getMoveStringList,
+  decreaseTimer,
+  hashRand,
 };

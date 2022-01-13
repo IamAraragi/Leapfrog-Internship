@@ -5,6 +5,7 @@ import {
   getPieceColor,
   getFromSquare,
   getToSquare,
+  hashRand,
 } from './utils.js';
 
 import Pawn from './pieces/pawn.js';
@@ -30,6 +31,9 @@ export default class Board {
     this.ply = 0;
     this.gamePly = 0;
     this.fiftyMoves = 0;
+    this.hashPiece = [];
+    this.hashEp = [];
+    this.hash = 0;
   }
 
   initialize() {
@@ -37,11 +41,13 @@ export default class Board {
     // this.parseFEN(
     //   'r2q1rk1/ppp2ppp/2n1bn2/2b1p3/3pP3/3P1NPP/PPP1NPB1/R1BQ1RK1 b - - 0 9'
     // );
-    // this.parseFEN('8/8/7N/8/8/7n/8/8 w - - 3 2');
+    // this.parseFEN('8/8/6QQ/8/8/k7/8/8 w - - 3 2');
     this.parseFEN('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
     this.renderBoard();
     this.getPieceList();
     this.renderAttackedBoard();
+    this.initHash();
+    this.setHash();
   }
 
   reset() {
@@ -58,6 +64,30 @@ export default class Board {
     this.castle = 0;
     this.gamePly = 0;
     this.fiftyMoves = 0;
+  }
+
+  initHash() {
+    for (let i = 0; i < 64; i++) {
+      this.hashPiece[i] = hashRand();
+      this.hashEp[i] = hashRand();
+    }
+    this.hashSide = hashRand();
+  }
+
+  setHash() {
+    for (let i = 0; i < 64; i++) {
+      let square = square64To120(i);
+      if (this.pieces[square] != CONSTANT.PIECES.empty) {
+        this.hash ^= this.hashPiece[i];
+      }
+      if (this.side === CONSTANT.BLACK) {
+        this.hash ^= this.hashSide;
+      }
+
+      if (this.enPassant !== 0 && this.enPassant !== CONSTANT.SQUARES.NO_SQ) {
+        this.hash ^= this.hashEp[i];
+      }
+    }
   }
 
   initializeFilesAndRanksBoard() {

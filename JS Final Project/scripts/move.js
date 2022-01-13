@@ -614,6 +614,7 @@ export default class MoveGen {
     this.gameInfo.castle = this.board.castle;
     this.gameInfo.enPassant = this.board.enPassant;
     this.gameInfo.fiftyMoves = this.board.fiftyMoves;
+    this.gameInfo.hash = this.board.hash;
 
     this.board.castle &= CONSTANT.CASTLE_PERM[fromSquare];
     this.board.castle &= CONSTANT.CASTLE_PERM[toSquare];
@@ -633,6 +634,8 @@ export default class MoveGen {
 
     this.board.gamePly++;
     this.board.ply++;
+
+    this.board.setHash();
   }
 
   generateLegalMoves() {
@@ -678,6 +681,14 @@ export default class MoveGen {
       ) === true &&
       this.moves.length === 0
     ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  isStaleMate() {
+    if (this.moves.length === 0 && this.checkCheckMate() === false) {
       return true;
     }
 
@@ -744,6 +755,7 @@ export default class MoveGen {
     this.board.castle = this.gameHistory[this.board.gamePly].castle;
     this.board.enPassant = this.gameHistory[this.board.gamePly].enPassant;
     this.board.fiftyMoves = this.gameHistory[this.board.gamePly].fiftyMoves;
+    this.board.hash = this.gameHistory[this.board.gamePly].hash;
 
     this.gameHistory.splice(-1);
 
@@ -757,5 +769,25 @@ export default class MoveGen {
     this.movePiece(toSquare, fromSquare);
     this.undoCaptureMove(move);
     this.undoPromotedMove(move);
+
+    return move;
+  }
+
+  isThreeFoldRepetition() {
+    let threeFoldCount = 0;
+    // console.log(this.board.gamePly);
+    // console.log(this.board.fiftyMoves)
+    // console.log(this.gameHistory);
+    for (
+      let i = this.board.gamePly - this.board.fiftyMoves;
+      i < this.board.gamePly;
+      i++
+    ) {
+      if (this.gameHistory[i].hash === this.board.hash) {
+        // console.log('a')
+        threeFoldCount++;
+      }
+    }
+    return threeFoldCount;
   }
 }
