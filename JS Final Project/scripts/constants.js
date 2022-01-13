@@ -108,7 +108,7 @@ const CONSTANT = {
 
     CHECKMATE: 50000,
 
-    DEPTH: 4
+    DEPTH: 3
   }
 
   export const SCORE_BY_POSITION =  {
