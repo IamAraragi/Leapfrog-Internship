@@ -1,15 +1,24 @@
 import CONSTANT from './constants.js';
 import { SCORE_BY_POSITION } from './constants.js';
-import { getMoveString, square120To64 } from './utils.js';
+import { square120To64 } from './utils.js';
 
 export default class Engine {
+  /**
+   * constructor for the game engine
+   * @param {*} board : board representation
+   * @param {*} moveGen move generation class
+   */
   constructor(board, moveGen) {
     this.board = board;
     this.moveGen = moveGen;
     this.bestMove;
-    this.nodes = 0;
   }
 
+  /**
+   * method to get positional score for the given piece
+   * @param {*} piece : piece for which the position score is to be determined
+   * @returns positional score for the piece
+   */
   getPositionScore(piece) {
     let positionScore = 0;
     for (let i = 0; i < this.board.pieceNum[piece]; i++) {
@@ -21,6 +30,10 @@ export default class Engine {
     return positionScore;
   }
 
+  /**
+   * method to get the score for the given board position
+   * @returns score
+   */
   getScore() {
     let score =
       this.board.totalMaterialForSide[CONSTANT.WHITE] -
@@ -41,47 +54,10 @@ export default class Engine {
     }
   }
 
-  sortMoves(moves) {
-    let movesWithScore = {};
-    let sortedMoves = [];
-    for (let i = 0; i < moves.length; i++) {
-      this.moveGen.makeMove(moves[i]);
-      let score = this.getScore();
-      this.moveGen.undoMove();
-      movesWithScore[score] = moves[i];
-    }
-
-    const keysSorted = Object.keys(movesWithScore).sort(function (a, b) {
-      return b - a;
-    });
-
-    for (let i = 0; i < keysSorted.length; i++) {
-      sortedMoves.push(movesWithScore[keysSorted[i]]);
-    }
-    return sortedMoves;
-  }
-
+  /**
+   * method to find the best move using alpha beta
+   */
   findBestMove() {
-    // for (let i = 1; i <= 4; i++) {
-    //   let bestScore = this.findAlphaBetaMove(
-    //     i,
-    //     -CONSTANT.CHECKMATE,
-    //     CONSTANT.CHECKMATE
-    //   );
-
-    //   let line =
-    //     'D:' +
-    //     i +
-    //     ' Best:' +
-    //     getMoveString(this.bestMove) +
-    //     ' Score:' +
-    //     bestScore +
-    //     ' nodes:' +
-    //     this.nodes;
-
-    //   console.log(line);
-    // }
-
     this.findAlphaBetaMove(
       CONSTANT.DEPTH,
       -CONSTANT.CHECKMATE,
@@ -89,17 +65,22 @@ export default class Engine {
     );
   }
 
+  /**
+   * method to implement the alpha beta algorith
+   * @param {*} depth : depth upto which alpha beta algorith searches
+   * @param {*} alpha : alpha value
+   * @param {*} beta : beta value
+   * @returns max score
+   */
   findAlphaBetaMove(depth, alpha, beta) {
     this.moveGen.generateLegalMoves();
 
-    if (depth === 0 || this.moveGen.moves.length === 0) {
+    if (depth === 0) {
       return this.getScore();
     }
-    this.nodes++;
 
     let maxScore = -CONSTANT.CHECKMATE;
 
-    // let moves = this.sortMoves(this.board.moveList[this.board.ply]);
     let moves = this.board.moveList[this.board.ply];
 
     for (let i = 0; i < moves.length; i++) {
@@ -122,6 +103,18 @@ export default class Engine {
       if (alpha >= beta) {
         break;
       }
+    }
+
+    if (this.moveGen.moves.length === 0) {
+      if (this.moveGen.checkCheckMate() === true) {
+        return -CONSTANT.CHECKMATE;
+      } else {
+        return 0;
+      }
+    }
+
+    if (this.moveGen.isThreeFoldRepetition >= 3) {
+      return 0;
     }
     return maxScore;
   }

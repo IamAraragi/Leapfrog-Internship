@@ -16,6 +16,11 @@ import Queen from './pieces/queen.js';
 import King from './pieces/king.js';
 
 export default class Board {
+  /**
+   * constructor for the board class
+   * Board class is used for the board representation. Here the chessboard is represented using mailbox mehod.
+   * The chess board is reprsented as the array of size 120 consisting of 10 columns and 12 rows.
+   */
   constructor() {
     this.pieces = [];
     this.side = CONSTANT.WHITE;
@@ -36,20 +41,21 @@ export default class Board {
     this.hash = 0;
   }
 
+  /**
+   * method to initialize the board class
+   */
   initialize() {
     this.initializeFilesAndRanksBoard();
-    // this.parseFEN(
-    //   'r2q1rk1/ppp2ppp/2n1bn2/2b1p3/3pP3/3P1NPP/PPP1NPB1/R1BQ1RK1 b - - 0 9'
-    // );
     // this.parseFEN('8/8/6QQ/8/8/k7/8/8 w - - 3 2');
     this.parseFEN('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
-    this.renderBoard();
     this.getPieceList();
-    this.renderAttackedBoard();
     this.initHash();
     this.setHash();
   }
 
+  /**
+   * method to reset the board class
+   */
   reset() {
     for (let i = 0; i < CONSTANT.TOTAL_SQUARES; i++) {
       this.pieces[i] = CONSTANT.SQUARES.OFFBOARD;
@@ -66,6 +72,9 @@ export default class Board {
     this.fiftyMoves = 0;
   }
 
+  /**
+   * method to intialize the random hash for each chess piece, side and enpassant square
+   */
   initHash() {
     for (let i = 0; i < 64; i++) {
       this.hashPiece[i] = hashRand();
@@ -74,6 +83,9 @@ export default class Board {
     this.hashSide = hashRand();
   }
 
+  /**
+   * method to set the hash value for the given chess position
+   */
   setHash() {
     for (let i = 0; i < 64; i++) {
       let square = square64To120(i);
@@ -90,6 +102,9 @@ export default class Board {
     }
   }
 
+  /**
+   * method to intialize the files and rank board array
+   */
   initializeFilesAndRanksBoard() {
     this.filesBoard = Array(CONSTANT.TOTAL_SQUARES).fill(
       CONSTANT.SQUARES.OFFBOARD
@@ -115,6 +130,10 @@ export default class Board {
     }
   }
 
+  /**
+   * method to intialize the piece list. Piece list keeps the square for the given piece
+   * Piece list is indexed through the given piece and the piece number for that piece
+   */
   getPieceList() {
     this.pieceList = Array(
       this.maximunSinglePiece * CONSTANT.TOTAL_SQUARES
@@ -137,12 +156,20 @@ export default class Board {
     }
   }
 
+  /**
+   * method to get the string value for given square. Uded for debugging
+   * @param {*} sq : square to be shown to console
+   * @returns square value in string form(eg a3)
+   */
   printSquare(sq) {
     return (
       CONSTANT.FILE_CHARACTER[this.filesBoard[sq]] + (this.ranksBoard[sq] + 1)
     );
   }
 
+  /**
+   * method to print the piece list to the console. Used for debugging
+   */
   printPieceLists() {
     let piece, pceNum;
 
@@ -159,6 +186,9 @@ export default class Board {
     }
   }
 
+  /**
+   * method to render board to the console
+   */
   renderBoard() {
     let line = '';
     for (
@@ -188,6 +218,10 @@ export default class Board {
     console.log(line);
   }
 
+  /**
+   * method to parse the fen string
+   * @param {*} fen : fen string (eg:'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1' )
+   */
   parseFEN(fen) {
     this.reset();
     let piece = 0;
@@ -196,12 +230,10 @@ export default class Board {
     let file = CONSTANT.FILES.FILE_A;
     let square = 0;
 
-    let fenString = fen.split(' ');
+    let fenString = fen.split(' '); //splits the fen string by space
 
-    //rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
-
+    // parses all the chess pieces from the fen string
     for (let i = 0; i < fenString[0].length; i++) {
-      //   console.log(fenString[0][i]);
       count = 1;
       switch (fenString[0][i]) {
         case 'p':
@@ -270,11 +302,14 @@ export default class Board {
       }
     }
 
+    // parses the side to play from the fen string
     if (fenString[1] === 'w') {
       this.side = CONSTANT.WHITE;
     } else {
       this.side = CONSTANT.BLACK;
     }
+
+    // parses the castling rights from the fen string
     for (let i = 0; i < fenString[2].length; i++) {
       switch (fenString[2][i]) {
         case 'K':
@@ -294,6 +329,7 @@ export default class Board {
       }
     }
 
+    //gets the enpassant square from the fen string
     if (fenString[3] !== '-') {
       file = fenString[3][0].charCodeAt() - 'a'.charCodeAt();
       rank = parseInt(fenString[3][1]) - 1;
@@ -302,6 +338,12 @@ export default class Board {
     }
   }
 
+  /**
+   * method to check if the square on the board is attacked by the given side
+   * @param {4} square : square on the board to be checked if it is attacked
+   * @param {*} side : side which attacks the square
+   * @returns true if the square is attacked or false
+   */
   isAttacked(square, side) {
     let pawn = new Pawn(this);
     let knight = new Knight(this);
@@ -320,6 +362,10 @@ export default class Board {
     );
   }
 
+  /**
+   * renders the board in the console with all the squares attacked marked by X(cross)
+   * Mainly used for debugging
+   */
   renderAttackedBoard() {
     let line = '';
     let piece = '-';
@@ -352,6 +398,7 @@ export default class Board {
     console.log(line);
   }
 
+  /**prints the possible move list in the console */
   printMoveList(x) {
     let moveNum = 1;
     for (let i = x; i < this.moveList.length; i++) {

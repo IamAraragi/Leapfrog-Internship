@@ -8,7 +8,7 @@ function init() {
   board.initialize();
   let moveGen = new MoveGen(board);
   let engine = new Engine(board, moveGen);
-  let boardInterface = new BoardInterface(board, moveGen, engine);
+  new BoardInterface(board, moveGen, engine);
 }
 
 init();
