@@ -8,6 +8,11 @@ import {
 } from './utils.js';
 
 export default class MoveGen {
+  /**
+   * constructor for the movegen class.
+   * Move generation class is used to generated legal moves, make a move and undo move
+   * @param {*} board : board class
+   */
   constructor(board) {
     this.board = board;
     this.moves = [];
@@ -35,10 +40,25 @@ export default class MoveGen {
     this.gameHistory = [];
   }
 
+  /**
+   * method to get the move in integer form
+   * @param {\} from : square from which the piece is moved
+   * @param {*} to : square to which the piece is moved
+   * @param {*} captured : captured piece
+   * @param {*} promoted promoted piece
+   * @param {*} flag : flag for pawn start/enpassant/castle
+   * @returns a integer
+   */
   getMove(from, to, captured, promoted, flag) {
     return from | (to << 7) | (captured << 14) | (promoted << 20) | flag;
   }
 
+  /**
+   * method to get all the white pawn promotion moves
+   * @param {*} square : square from which the white pawn is to be moved
+   * @param {*} newSquare : square to which the white pawn is to be moved
+   * @param {*} captured : captured piece if any
+   */
   getWhitePawnPromotionMoves(square, newSquare, captured) {
     let move = 0;
     if (this.board.ranksBoard[square] === CONSTANT.RANKS.RANK_7) {
@@ -56,6 +76,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the white pawn forward moves
+   * @param {*} square : square where the white pawn is
+   */
   getWhitePawnForwardMoves(square) {
     //Check for forward move
     let newSquare = square + 10;
@@ -82,6 +106,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the white pawn capture moves
+   * @param {*} square : square where the white pawn is
+   */
   getWhitePawnCaptureMoves(square) {
     // Check for pawn captures
     let newSquare = square + CONSTANT.PAWN_ATTACKS[0];
@@ -111,6 +139,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the enpassant moves for the white pawn
+   * @param {*} square : square where the white pawn is
+   */
   getWhitePawnEnPassantMoves(square) {
     //check for en passants
     let newSquare = square + CONSTANT.PAWN_ATTACKS[0];
@@ -138,6 +170,9 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the castle moves for the white side
+   */
   getWhiteSideCastleMoves() {
     if (this.board.castle & CONSTANT.CASTLE.WHITE_KING_CASTLE) {
       if (
@@ -149,7 +184,6 @@ export default class MoveGen {
             false &&
           this.board.isAttacked(CONSTANT.SQUARES.F1, CONSTANT.BLACK) === false
         ) {
-          // console.log('s');
           let move = this.getMove(
             CONSTANT.SQUARES.E1,
             CONSTANT.SQUARES.G1,
@@ -186,6 +220,9 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the possible white pawn moves
+   */
   getWhitePawnMoves() {
     let piece = CONSTANT.PIECES.wP;
 
@@ -199,6 +236,12 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the black pawn promotion moves
+   * @param {*} square : square from which the black pawn is to be moved
+   * @param {*} newSquare : square to which the black pawn is to be moved
+   * @param {*} captured : captured piece if any
+   */
   getBlackPawnPromotionMoves(square, newSquare, captured) {
     let move = 0;
     if (this.board.ranksBoard[square] === CONSTANT.RANKS.RANK_2) {
@@ -216,6 +259,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the black pawn forward moves
+   * @param {*} square : square where the black pawn is
+   */
   getBlackPawnForwardMoves(square) {
     //Check for forward move
     let newSquare = square - 10;
@@ -241,6 +288,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the black pawn capture moves
+   * @param {*} square : square where the black pawn is
+   */
   getBlackPawnCaptureMoves(square) {
     // Check for pawn captures
     let newSquare = square - CONSTANT.PAWN_ATTACKS[0];
@@ -270,6 +321,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the enpassant moves for the black pawn
+   * @param {*} square : square where the black pawn is
+   */
   getBlackPawnEnPassantMoves(square) {
     //check for en passants
     let newSquare = square - CONSTANT.PAWN_ATTACKS[0];
@@ -297,9 +352,11 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the castle moves for the black side
+   */
   getBlackSideCastleMoves() {
     if (this.board.castle & CONSTANT.CASTLE.BLACK_KING_CASTLE) {
-      // console.log('a');
       if (
         this.board.pieces[CONSTANT.SQUARES.G8] === CONSTANT.PIECES.empty &&
         this.board.pieces[CONSTANT.SQUARES.F8] === CONSTANT.PIECES.empty
@@ -322,7 +379,6 @@ export default class MoveGen {
     }
 
     if (this.board.castle & CONSTANT.CASTLE.BLACK_QUEEN_CASTLE) {
-      // console.log('b');
       if (
         this.board.pieces[CONSTANT.SQUARES.B8] === CONSTANT.PIECES.empty &&
         this.board.pieces[CONSTANT.SQUARES.C8] === CONSTANT.PIECES.empty &&
@@ -346,6 +402,9 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the possible black pawn moves
+   */
   getBlackPawnMoves() {
     let piece = CONSTANT.PIECES.bP;
 
@@ -359,6 +418,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get the possible moves for the non sliding piece of both sides
+   * Non Sliding pieces are knight and king
+   */
   getNonSlidingPieceMoves() {
     let nonSlidingPiece = [];
     if (this.board.side === CONSTANT.WHITE) {
@@ -412,6 +475,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to get all the possible moves for the sliding piece for both side.
+   * Sliding pieces are bishop, rook and queen
+   */
   getSlidingPieceMoves() {
     let slidingPiece = [];
     if (this.board.side === CONSTANT.WHITE) {
@@ -470,8 +537,11 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to generate the pseudo leagal moves
+   * pseudo legal moves doesn't check if the king is in check because of that move
+   */
   generatePseudoLegalMoves() {
-    // console.log(this.board.pieceList);
     this.moves = [];
     if (this.board.side === CONSTANT.WHITE) {
       this.getWhitePawnMoves();
@@ -485,6 +555,11 @@ export default class MoveGen {
     this.getSlidingPieceMoves();
   }
 
+  /**
+   * method to move piece from one square to another
+   * @param {*} fromSquare : square from which piece is moved
+   * @param {*} toSquare : square to which piece is moved
+   */
   movePiece(fromSquare, toSquare) {
     let movedPiece = this.board.pieces[fromSquare];
     this.board.pieces[fromSquare] = CONSTANT.PIECES.empty;
@@ -503,6 +578,11 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to add piece to the given square
+   * @param {*} piece : piece to be added
+   * @param {*} square : square to which the piece is added
+   */
   addPiece(piece, square) {
     if (this.board.pieces[square] === CONSTANT.PIECES.empty) {
       this.board.pieces[square] = piece;
@@ -515,6 +595,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to remove the piece from the given square
+   * @param {*} square : square from which the piece is to removed
+   */
   clearPiece(square) {
     let piece = this.board.pieces[square];
     if (piece !== CONSTANT.PIECES.empty) {
@@ -535,6 +619,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to make the enpassant move
+   * @param {*} move : move in the integer form
+   */
   makeEnPassantMove(move) {
     let toSquare = getToSquare(move);
     if (move & CONSTANT.FLAG_ENPASSANT) {
@@ -548,6 +636,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to make the castle move
+   * @param {*} move : move in the integer form
+   */
   makeCastleMove(move) {
     let toSquare = getToSquare(move);
     if (move & CONSTANT.FLAG_CASTLE) {
@@ -567,11 +659,20 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to make the capture move
+   * @param {*} move : move in the integer form
+   */
   makeCaptureMove(move) {
     let toSquare = getToSquare(move);
     this.clearPiece(toSquare);
   }
 
+  /**
+   * method to make the pawn start move
+   * Pawn can move 2 squre if it is in starting position
+   * @param {*} move : move in the integer form
+   */
   makePawnStartMove(move) {
     let fromSquare = getFromSquare(move);
 
@@ -590,6 +691,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to make the promotion move
+   * @param {*} move : move in the integer form
+   */
   makePromotionMove(move) {
     let toSquare = getToSquare(move);
     let promotedPiece = promoted(move);
@@ -600,12 +705,14 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to make the given move
+   * @param {*} move : move in integer form
+   */
   makeMove(move) {
     this.gameInfo = [];
     let fromSquare = getFromSquare(move);
     let toSquare = getToSquare(move);
-    // let capturedSquare = captured(move);
-    // let promotedSquare = promoted(move);
 
     this.makeEnPassantMove(move);
     this.makeCastleMove(move);
@@ -638,6 +745,10 @@ export default class MoveGen {
     this.board.setHash();
   }
 
+  /**
+   * method to generate all the legal moves
+   * legal moves checks if the king is in check from the given move
+   */
   generateLegalMoves() {
     let piece = 0;
     this.generatePseudoLegalMoves();
@@ -663,38 +774,10 @@ export default class MoveGen {
     this.board.moveList[this.board.ply] = this.moves;
   }
 
-  checkCheckMate() {
-    let piece = 0;
-    this.generateLegalMoves();
-
-    if (this.board.side === CONSTANT.WHITE) {
-      piece = CONSTANT.PIECES.wK;
-    } else {
-      piece = CONSTANT.PIECES.bK;
-    }
-    let pieceIndex = piece * 10 + 0;
-
-    if (
-      this.board.isAttacked(
-        this.board.pieceList[pieceIndex],
-        +!this.board.side
-      ) === true &&
-      this.moves.length === 0
-    ) {
-      return true;
-    }
-
-    return false;
-  }
-
-  isStaleMate() {
-    if (this.moves.length === 0 && this.checkCheckMate() === false) {
-      return true;
-    }
-
-    return false;
-  }
-
+  /**
+   * method to undo the enpassant move
+   * @param {*} move : move in integer form
+   */
   undoEnpassantMove(move) {
     let toSquare = getToSquare(move);
     if (move & CONSTANT.FLAG_ENPASSANT) {
@@ -706,6 +789,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to undo the castle move
+   * @param {*} move : move in integer form
+   */
   undoCastleMove(move) {
     let toSquare = getToSquare(move);
     if (move & CONSTANT.FLAG_CASTLE) {
@@ -725,6 +812,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to undo the capture move
+   * @param {*} move : move in integer form
+   */
   undoCaptureMove(move) {
     let toSquare = getToSquare(move);
     let capturedPiece = captured(move);
@@ -733,6 +824,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to undo the promoted move
+   * @param {*} move : move in integer form
+   */
   undoPromotedMove(move) {
     let fromSquare = getFromSquare(move);
     let promotedPiece = promoted(move);
@@ -747,6 +842,10 @@ export default class MoveGen {
     }
   }
 
+  /**
+   * method to undo the move
+   * @returns the moved to be undone
+   */
   undoMove() {
     this.board.gamePly--;
     this.board.ply--;
@@ -773,18 +872,58 @@ export default class MoveGen {
     return move;
   }
 
+  /**
+   * method to check for checkmate
+   * @returns true if it is checkmate else return false
+   */
+  checkCheckMate() {
+    let piece = 0;
+    this.generateLegalMoves();
+
+    if (this.board.side === CONSTANT.WHITE) {
+      piece = CONSTANT.PIECES.wK;
+    } else {
+      piece = CONSTANT.PIECES.bK;
+    }
+    let pieceIndex = piece * 10 + 0;
+
+    if (
+      this.board.isAttacked(
+        this.board.pieceList[pieceIndex],
+        +!this.board.side
+      ) === true &&
+      this.moves.length === 0
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
+   * method to check for stalemate
+   * @returns true if it is stalemate else return false
+   */
+  isStaleMate() {
+    if (this.moves.length === 0 && this.checkCheckMate() === false) {
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
+   * method to check if there is three fold repetition
+   * @returns the number of the repititions
+   */
   isThreeFoldRepetition() {
     let threeFoldCount = 0;
-    // console.log(this.board.gamePly);
-    // console.log(this.board.fiftyMoves)
-    // console.log(this.gameHistory);
     for (
       let i = this.board.gamePly - this.board.fiftyMoves;
       i < this.board.gamePly;
       i++
     ) {
       if (this.gameHistory[i].hash === this.board.hash) {
-        // console.log('a')
         threeFoldCount++;
       }
     }
